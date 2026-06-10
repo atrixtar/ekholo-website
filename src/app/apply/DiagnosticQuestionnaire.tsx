@@ -148,8 +148,6 @@ const pages: { title: string; questions: Question[] }[] = [
 ];
 
 /* ─── SCORING ─── */
-const WEBHOOK_URL =
-  "https://script.google.com/macros/s/AKfycbwE1BuxabFiDLDssuyxjthEoKxbcuQNRaomAsTSH-qEPUWv6YT_on7UPs5WIsIuWON_/exec";
 
 function getLevel(score: number): { level: number; label: string } {
   if (score <= 16) return { level: 1, label: "Level 1 — Foundation missing" };
@@ -296,14 +294,13 @@ export default function DiagnosticQuestionnaire() {
     };
 
     try {
-      await fetch(WEBHOOK_URL, {
+      await fetch("/api/submit-diagnostic", {
         method: "POST",
-        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
     } catch {
-      // Show result regardless of webhook success
+      // Show result regardless of submission success
     }
 
     setStage("result");
