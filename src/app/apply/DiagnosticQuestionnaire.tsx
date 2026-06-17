@@ -40,13 +40,13 @@ const pages: { title: string; questions: Question[] }[] = [
           { letter: "A", points: 1, text: "I have a profile but it’s not set up to attract clients." },
           { letter: "B", points: 2, text: "I have a profile and it’s decent, but I don’t have a clear message." },
           { letter: "C", points: 3, text: "I have a clear message and people understand what I do within seconds." },
-          { letter: "D", points: 4, text: "I have positioning, a lead magnet, and a way to capture contact details automatically." },
+          { letter: "D", points: 4, text: "I have positioning, something free that captures contact info, and a way to collect details automatically." },
         ],
       },
     ],
   },
   {
-    title: "Conversion Infrastructure",
+    title: "What Happens After the Click",
     questions: [
       {
         id: "q3",
@@ -64,8 +64,8 @@ const pages: { title: string; questions: Question[] }[] = [
         options: [
           { letter: "A", points: 1, text: "No. I send my Instagram, my homepage, or explain everything over WhatsApp." },
           { letter: "B", points: 2, text: "I have a website but it’s general. It doesn’t isolate one specific offer." },
-          { letter: "C", points: 3, text: "Yes, but it’s basic. No testimonials, no explanation of why it works, no clear CTA." },
-          { letter: "D", points: 4, text: "Yes. It has proof, explains why the solution works, handles objections, and has a clear CTA." },
+          { letter: "C", points: 3, text: "Yes, but it’s basic. No testimonials, no explanation of why it works, no clear next step." },
+          { letter: "D", points: 4, text: "Yes. It has proof, explains why the solution works, handles objections, and tells them exactly what to do next." },
         ],
       },
     ],
@@ -151,7 +151,7 @@ const pages: { title: string; questions: Question[] }[] = [
 
 function getLevel(score: number): { level: number; label: string } {
   if (score <= 16) return { level: 1, label: "Level 1 — Foundation missing" };
-  if (score <= 24) return { level: 2, label: "Level 2 — Funnel leaking" };
+  if (score <= 24) return { level: 2, label: "Level 2 — People leave in the middle" };
   if (score <= 32) return { level: 3, label: "Level 3 — Economics broken" };
   return { level: 4, label: "Level 4 — Scaling problem" };
 }
@@ -161,11 +161,11 @@ function getComponents(level: number): string {
     case 1:
       return "Positioning, Mechanism documentation, Social proof collection, Single offer page";
     case 2:
-      return "Advertorial or DM qualifying script, Testimonial documentation, Landing page with proof";
+      return "Warm-up article or DM qualifying script, Testimonial documentation, Landing page with proof";
     case 3:
-      return "Advertorial, Sales page / VSL, Checkout optimisation, WhatsApp post-purchase sequence";
+      return "Warm-up article, Sales page or sales video, Checkout cleanup, WhatsApp post-purchase sequence";
     case 4:
-      return "WhatsApp commerce flow, Upsell architecture, Referral trigger, TikTok Live integration";
+      return "WhatsApp commerce flow, Repeat-buyer path, Referral trigger, TikTok Live integration";
     default:
       return "";
   }
@@ -190,11 +190,76 @@ function getBandwidthLabel(letter: AnswerLetter): string {
 }
 
 const levelDescriptions: Record<number, string> = {
-  1: "Before building a funnel, you need the foundation it runs on. Your immediate priority is proof, positioning, and a mechanism — the reason your solution works. Without these, traffic won’t convert regardless of what you spend.",
-  2: "You have an audience but the handoff is broken. Leads are dying somewhere between first contact and close. The fix is usually one missing piece — a qualifying process, a page with proof, or a clear next step. We’ll find it.",
-  3: "The funnel exists but the economics don’t work yet. You’re likely sending cold traffic to a page with no warm-up layer. An advertorial, a stronger sales page, and a post-purchase sequence on WhatsApp will change the numbers.",
-  4: "The engine works. Now it needs systems so it runs without you in every conversation. Post-purchase retention, upsell architecture, and referral triggers are where your next revenue jump lives.",
+  1: "Before you build anything else, you need the foundation. Your immediate priority is proof, positioning, and a mechanism — the reason your solution works. Without these, sending more people to your page won’t change the bank account.",
+  2: "You have an audience but people disappear somewhere between first contact and the sale. The fix is usually one missing piece — a qualifying step, a page with proof, or a clear next action. We’ll find it.",
+  3: "The path from ad to sale exists but the numbers don’t work yet. You’re likely sending strangers straight to a page with no warm-up. A warm-up article, a stronger sales page, and a post-purchase sequence on WhatsApp will change that.",
+  4: "The engine works. Now it needs systems so it runs without you in every conversation. Post-purchase follow-up, a repeat-buyer path, and referral triggers are where your next revenue jump lives.",
 };
+
+// Anthony's WhatsApp number — replace with actual number
+const EKHOLO_WHATSAPP = "25488120047";
+
+/* ─── LEVEL 2 ROADMAP GENERATOR ─── */
+interface RoadmapStep {
+  number: number;
+  label: string;
+  diagnosis: string;
+  action: string;
+  outcome: string;
+}
+
+function generateRoadmap(
+  dropoffAnswer: string,
+  whyNotBuyAnswer: string,
+  componentsList: string[],
+  goalLabel: string,
+): RoadmapStep[] {
+  const steps: RoadmapStep[] = [];
+
+  // Step 1 — fix the drop-off point (drawn from Q1 intake)
+  steps.push({
+    number: 1,
+    label: "Fix the drop-off point",
+    diagnosis: `You said people drop off here: "${dropoffAnswer.trim()}." That is where the leak sits.`,
+    action: componentsList[0]
+      ? `Build a ${componentsList[0].toLowerCase()} that catches them at that exact moment.`
+      : "Map the exact page or step where they leave and rebuild it with proof and a clear next step.",
+    outcome: "Fewer people vanish at the point where you lose them most.",
+  });
+
+  // Step 2 — address why they don't buy (drawn from Q2 intake)
+  steps.push({
+    number: 2,
+    label: "Answer the hesitation",
+    diagnosis: `You believe they don't buy because: "${whyNotBuyAnswer.trim()}." That hesitation needs a direct answer on the page.`,
+    action: componentsList[1]
+      ? `Use ${componentsList[1].toLowerCase()} to address that objection before they reach the decision point.`
+      : "Write the answer to that objection and place it above your call to action — proof first, ask second.",
+    outcome: "The people who stay past step one now have a reason to move forward instead of a reason to hesitate.",
+  });
+
+  // Step 3 — connect the pieces
+  steps.push({
+    number: 3,
+    label: "Connect the pieces",
+    diagnosis: `Your goal is "${goalLabel.toLowerCase()}," but each piece of your path was built in isolation.`,
+    action: componentsList[2]
+      ? `Wire a ${componentsList[2].toLowerCase()} so that each stage hands the buyer to the next with the right context.`
+      : "Review every transition — ad to page, page to checkout, checkout to follow-up — and make sure each one carries the story forward.",
+    outcome: "The path from first click to sale feels like one conversation, not five disconnected rooms.",
+  });
+
+  // Step 4 — measure and sharpen
+  steps.push({
+    number: 4,
+    label: "Measure and sharpen",
+    diagnosis: "You now have a connected path. But you don't yet know which piece is the weakest link.",
+    action: "Track where people drop off each week. Test one change at a time. Keep the winner, kill the loser.",
+    outcome: "Every week, the path gets tighter. The numbers climb without you rebuilding anything from scratch.",
+  });
+
+  return steps;
+}
 
 const levelColors: Record<number, { bg: string; text: string; border: string; badge: string }> = {
   1: { bg: "bg-amber-500/10", text: "text-amber-400", border: "border-amber-500/30", badge: "bg-amber-500" },
@@ -215,6 +280,10 @@ export default function DiagnosticQuestionnaire() {
   });
   const [stage, setStage] = useState<"questions" | "contact" | "result">("questions");
   const [submitting, setSubmitting] = useState(false);
+  // Level 2 roadmap state
+  const [roadmapStage, setRoadmapStage] = useState<"idle" | "intake" | "display">("idle");
+  const [intakeDropoff, setIntakeDropoff] = useState("");
+  const [intakeWhyNotBuy, setIntakeWhyNotBuy] = useState("");
 
   const totalPages = pages.length;
   // Progress: questions = pages 0-4 out of 7 steps, contact = 5, result = 6
@@ -509,81 +578,266 @@ export default function DiagnosticQuestionnaire() {
       {/* ─── RESULT STAGE ─── */}
       {stage === "result" && (
         <div>
-          {/* Level badge */}
-          <div className="text-center mb-8">
-            <div
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full ${colors.bg} ${colors.border} border mb-6`}
-            >
-              <span className={`w-2.5 h-2.5 rounded-full ${colors.badge}`} />
-              <span className={`text-sm font-bold ${colors.text}`}>
-                {levelLabel}
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">
-              Your diagnostic is ready.
-            </h2>
-          </div>
+          {/* ── Level 2: Intake form ── */}
+          {level === 2 && roadmapStage === "intake" && (
+            <div>
+              <p className="text-gold text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+                Build your roadmap
+              </p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+                Two questions. Then your four-step plan.
+              </h2>
+              <p className="text-sm text-white/50 mb-8 leading-relaxed">
+                Tell us where people fall off and why you think they don&apos;t buy.
+                We&apos;ll turn your answers into a concrete roadmap.
+              </p>
 
-          {/* Description */}
-          <div className={`p-6 rounded-xl ${colors.bg} border ${colors.border} mb-8`}>
-            <p className="text-sm text-white/80 leading-relaxed">
-              {levelDescriptions[level]}
-            </p>
-          </div>
+              <div className="space-y-6">
+                <div>
+                  <label
+                    htmlFor="intake-dropoff"
+                    className="block text-xs font-semibold text-white/60 uppercase tracking-wider mb-2"
+                  >
+                    Where do interested people drop off in your process?
+                  </label>
+                  <textarea
+                    id="intake-dropoff"
+                    value={intakeDropoff}
+                    onChange={(e) => setIntakeDropoff(e.target.value)}
+                    rows={3}
+                    className="w-full px-4 py-3.5 rounded-xl bg-white/[0.05] border border-white/10 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-gold/50 focus:bg-white/[0.07] transition-all resize-none"
+                    placeholder="e.g. They DM me, I send pricing, then I never hear back..."
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="intake-whynot"
+                    className="block text-xs font-semibold text-white/60 uppercase tracking-wider mb-2"
+                  >
+                    Why do you think they don&apos;t end up buying?
+                  </label>
+                  <textarea
+                    id="intake-whynot"
+                    value={intakeWhyNotBuy}
+                    onChange={(e) => setIntakeWhyNotBuy(e.target.value)}
+                    rows={3}
+                    className="w-full px-4 py-3.5 rounded-xl bg-white/[0.05] border border-white/10 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-gold/50 focus:bg-white/[0.07] transition-all resize-none"
+                    placeholder="e.g. I think they don't see enough proof that it works..."
+                  />
+                </div>
+              </div>
 
-          {/* Recommended components */}
-          <div className="mb-8">
-            <h3 className="text-xs font-semibold text-white/50 uppercase tracking-[0.2em] mb-4">
-              Recommended components
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {components.split(", ").map((comp) => (
-                <span
-                  key={comp}
-                  className="px-3.5 py-2 rounded-lg bg-white/[0.05] border border-white/10 text-sm text-white/70"
+              <div className="mt-10 flex items-center justify-between gap-4">
+                <button
+                  onClick={() => setRoadmapStage("idle")}
+                  className="px-6 py-3 text-sm font-medium text-white/50 hover:text-white transition-colors"
                 >
-                  {comp}
-                </span>
-              ))}
+                  &larr; Back to results
+                </button>
+                <button
+                  onClick={() => {
+                    setRoadmapStage("display");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  disabled={!intakeDropoff.trim() || !intakeWhyNotBuy.trim()}
+                  className={`px-8 py-3.5 rounded-full text-sm font-semibold transition-all ${
+                    intakeDropoff.trim() && intakeWhyNotBuy.trim()
+                      ? "bg-gold text-charcoal hover:bg-gold-light hover:shadow-[0_0_20px_rgba(198,164,78,0.3)]"
+                      : "bg-white/10 text-white/30 cursor-not-allowed"
+                  }`}
+                >
+                  Generate my roadmap &rarr;
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
-          {/* Goal + Bandwidth */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-            <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
-              <p className="text-[10px] font-semibold text-white/40 uppercase tracking-[0.2em] mb-1">
-                Your goal
-              </p>
-              <p className="text-sm font-medium text-white">
-                {answers.q9 ? getGoalLabel(answers.q9) : ""}
-              </p>
+          {/* ── Level 2: Generated roadmap ── */}
+          {level === 2 && roadmapStage === "display" && (
+            <div>
+              <div className="text-center mb-10">
+                <div
+                  className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full ${colors.bg} ${colors.border} border mb-6`}
+                >
+                  <span className={`w-2.5 h-2.5 rounded-full ${colors.badge}`} />
+                  <span className={`text-sm font-bold ${colors.text}`}>
+                    {levelLabel}
+                  </span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-white">
+                  Your four-step roadmap.
+                </h2>
+                <p className="mt-3 text-sm text-white/50">
+                  Built from your answers. Each step hands you to the next.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                {generateRoadmap(
+                  intakeDropoff,
+                  intakeWhyNotBuy,
+                  components.split(", "),
+                  answers.q9 ? getGoalLabel(answers.q9) : "",
+                ).map((step) => (
+                  <div
+                    key={step.number}
+                    className="p-6 rounded-xl bg-white/[0.05] border border-white/10"
+                  >
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="shrink-0 w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center text-xs font-bold">
+                        {step.number}
+                      </span>
+                      <h3 className="text-base font-bold text-white">
+                        Step {step.number} &mdash; {step.label}
+                      </h3>
+                    </div>
+                    <p className="text-sm text-white/70 leading-relaxed mb-2">
+                      {step.diagnosis}
+                    </p>
+                    <p className="text-sm text-white/70 leading-relaxed mb-2">
+                      <span className="text-gold font-semibold">Action:</span>{" "}
+                      {step.action}
+                    </p>
+                    <p className="text-sm text-white/50 leading-relaxed italic">
+                      {step.outcome}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Upgrade prompt */}
+              <div className="mt-10 pt-8 border-t border-white/5 text-center">
+                <p className="text-sm text-white/40 mb-6 leading-relaxed">
+                  Want this built with you rather than by you?
+                  <br />
+                  That is what Ekholo does.
+                </p>
+                <a
+                  href={`https://wa.me/${EKHOLO_WHATSAPP}?text=${encodeURIComponent(
+                    `Hi, I just completed the Ekholo diagnostic. I scored ${score}/40 and landed at ${levelLabel}. I'd like to talk about the done-with-you option.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-sm font-semibold bg-gold text-charcoal hover:bg-gold-light hover:shadow-[0_0_20px_rgba(198,164,78,0.3)] transition-all"
+                >
+                  Talk to Ekholo &rarr;
+                </a>
+              </div>
+
+              {/* Score */}
+              <div className="mt-8 p-4 rounded-xl bg-white/[0.03] border border-white/5 text-center">
+                <p className="text-[10px] font-semibold text-white/40 uppercase tracking-[0.2em] mb-1">
+                  Readiness score
+                </p>
+                <p className={`text-3xl font-bold ${colors.text}`}>
+                  {score}<span className="text-base text-white/30">/40</span>
+                </p>
+              </div>
+
+              {/* Closing */}
+              <div className="text-center pt-4 mt-8 border-t border-white/5">
+                <p className="text-sm text-white/50">
+                  Results have been noted. Expect a WhatsApp message within 24 hours.
+                </p>
+              </div>
             </div>
-            <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
-              <p className="text-[10px] font-semibold text-white/40 uppercase tracking-[0.2em] mb-1">
-                Your bandwidth
-              </p>
-              <p className="text-sm font-medium text-white">
-                {answers.q10 ? getBandwidthLabel(answers.q10) : ""}
-              </p>
+          )}
+
+          {/* ── Standard result screen (all levels; Level 2 when roadmapStage is idle) ── */}
+          {!(level === 2 && (roadmapStage === "intake" || roadmapStage === "display")) && (
+            <div>
+              {/* Level badge */}
+              <div className="text-center mb-8">
+                <div
+                  className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full ${colors.bg} ${colors.border} border mb-6`}
+                >
+                  <span className={`w-2.5 h-2.5 rounded-full ${colors.badge}`} />
+                  <span className={`text-sm font-bold ${colors.text}`}>
+                    {levelLabel}
+                  </span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-white">
+                  Your diagnostic is ready.
+                </h2>
+              </div>
+
+              {/* Description */}
+              <div className={`p-6 rounded-xl ${colors.bg} border ${colors.border} mb-8`}>
+                <p className="text-sm text-white/80 leading-relaxed">
+                  {levelDescriptions[level]}
+                </p>
+              </div>
+
+              {/* Recommended components */}
+              <div className="mb-8">
+                <h3 className="text-xs font-semibold text-white/50 uppercase tracking-[0.2em] mb-4">
+                  Recommended components
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {components.split(", ").map((comp) => (
+                    <span
+                      key={comp}
+                      className="px-3.5 py-2 rounded-lg bg-white/[0.05] border border-white/10 text-sm text-white/70"
+                    >
+                      {comp}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Level 2 — Build my roadmap button */}
+              {level === 2 && (
+                <div className="mb-8">
+                  <button
+                    onClick={() => {
+                      setRoadmapStage("intake");
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className="w-full px-8 py-4 rounded-full text-sm font-semibold bg-gold text-charcoal hover:bg-gold-light hover:shadow-[0_0_20px_rgba(198,164,78,0.3)] transition-all"
+                  >
+                    Build my roadmap &rarr;
+                  </button>
+                </div>
+              )}
+
+              {/* Goal + Bandwidth */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
+                  <p className="text-[10px] font-semibold text-white/40 uppercase tracking-[0.2em] mb-1">
+                    Your goal
+                  </p>
+                  <p className="text-sm font-medium text-white">
+                    {answers.q9 ? getGoalLabel(answers.q9) : ""}
+                  </p>
+                </div>
+                <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
+                  <p className="text-[10px] font-semibold text-white/40 uppercase tracking-[0.2em] mb-1">
+                    Your bandwidth
+                  </p>
+                  <p className="text-sm font-medium text-white">
+                    {answers.q10 ? getBandwidthLabel(answers.q10) : ""}
+                  </p>
+                </div>
+              </div>
+
+              {/* Score */}
+              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5 mb-8 text-center">
+                <p className="text-[10px] font-semibold text-white/40 uppercase tracking-[0.2em] mb-1">
+                  Readiness score
+                </p>
+                <p className={`text-3xl font-bold ${colors.text}`}>
+                  {score}<span className="text-base text-white/30">/40</span>
+                </p>
+              </div>
+
+              {/* Closing */}
+              <div className="text-center pt-4 border-t border-white/5">
+                <p className="text-sm text-white/50">
+                  Results have been noted. Expect a WhatsApp message within 24 hours.
+                </p>
+              </div>
             </div>
-          </div>
-
-          {/* Score */}
-          <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5 mb-8 text-center">
-            <p className="text-[10px] font-semibold text-white/40 uppercase tracking-[0.2em] mb-1">
-              Funnel readiness score
-            </p>
-            <p className={`text-3xl font-bold ${colors.text}`}>
-              {score}<span className="text-base text-white/30">/40</span>
-            </p>
-          </div>
-
-          {/* Closing */}
-          <div className="text-center pt-4 border-t border-white/5">
-            <p className="text-sm text-white/50">
-              Results have been noted. Expect a WhatsApp message within 24 hours.
-            </p>
-          </div>
+          )}
         </div>
       )}
     </div>

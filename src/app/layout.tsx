@@ -20,17 +20,17 @@ export const metadata: Metadata = {
     template: "%s | Ekholo",
   },
   description:
-    "Stop paying for clicks that don't convert. Ekholo builds the complete post-click conversion infrastructure that turns your ad spend into actual revenue. No vanity metrics. No black box.",
+    "Stop paying for clicks that vanish. Ekholo builds the complete path from ad click to sale — proof, warm-up, sales page, checkout, and follow-up — so your ad spend turns into actual revenue. No vanity metrics. No black box.",
   keywords: [
     "paid ads agency",
-    "conversion funnel",
+    "post-click path",
     "ad spend optimization",
     "content climb system",
     "DTC marketing",
     "landing page optimization",
-    "advertorial",
-    "VSL",
-    "CRO agency",
+    "warm-up article",
+    "sales video",
+    "conversion rate agency",
   ],
 };
 

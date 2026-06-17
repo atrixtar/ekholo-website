@@ -8,9 +8,10 @@ export function Footer() {
           <div className="md:col-span-2">
             <span className="text-2xl font-bold tracking-[0.2em]">EKHOLO</span>
             <p className="mt-4 text-white/60 text-sm leading-relaxed max-w-md">
-              The Content Climb System builds the complete post-click conversion
-              infrastructure that cold traffic actually needs before it will buy.
-              No vanity metrics. No jargon. No black box.
+              We build the path between the click and the sale. Six pieces,
+              built in the same room, pointing at the same buyer. You see every
+              number, every test, every result &mdash; tied to the money that
+              hits your bank account.
             </p>
           </div>
           <div>
@@ -39,7 +40,7 @@ export function Footer() {
                   href="/case-studies"
                   className="text-sm text-white/60 hover:text-white transition-colors"
                 >
-                  Case Studies
+                  Live Audits
                 </Link>
               </li>
               <li>
@@ -54,7 +55,7 @@ export function Footer() {
           </div>
           <div>
             <h4 className="text-xs font-semibold tracking-widest uppercase text-gold mb-4">
-              Get Started
+              Start Here
             </h4>
             <ul className="space-y-2">
               <li>
@@ -62,7 +63,7 @@ export function Footer() {
                   href="/apply"
                   className="text-sm text-white/60 hover:text-white transition-colors"
                 >
-                  Apply for a Diagnostic
+                  Take the Diagnostic
                 </Link>
               </li>
             </ul>

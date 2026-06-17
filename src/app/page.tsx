@@ -17,10 +17,8 @@ import { FAQAccordion } from "@/components/FAQ";
 function HeroSection() {
   return (
     <section className="relative bg-charcoal text-white overflow-hidden min-h-[90vh] flex items-center">
-      {/* Radial glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_40%,rgba(198,164,78,0.1),transparent_60%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_80%_20%,rgba(198,164,78,0.05),transparent_50%)]" />
-      {/* Grid overlay */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -38,17 +36,17 @@ function HeroSection() {
           </FadeUp>
           <FadeUp delay={0.1}>
             <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-bold leading-[1.08] tracking-tight">
-              Your ads get clicks.
+              People click your ad.
               <br />
-              <span className="text-gold">Your funnel doesn&apos;t close.</span>
+              <span className="text-gold">Then they vanish.</span>
             </h1>
           </FadeUp>
           <FadeUp delay={0.2}>
             <p className="mt-8 text-lg sm:text-xl text-white/60 leading-relaxed max-w-2xl">
-              You&apos;re spending $3K&ndash;$100K/month on ads that drive
-              traffic to a page that wasn&apos;t built for cold traffic. We
-              build the complete post-click infrastructure so your ad spend
-              actually converts.
+              A stranger sees your ad. She clicks. She lands on a page that says
+              nothing about why she should trust you. So she leaves. You paid for
+              that click. We build the path that turns her into a buyer &mdash;
+              from the first glance to the final sale.
             </p>
           </FadeUp>
           <FadeUp delay={0.3}>
@@ -57,7 +55,7 @@ function HeroSection() {
                 href="/apply"
                 className="group inline-flex items-center justify-center px-8 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light transition-all text-base hover:shadow-[0_0_30px_rgba(198,164,78,0.3)]"
               >
-                Get Your Free Diagnostic
+                Show Me Where It Breaks
                 <svg
                   className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"
                   fill="none"
@@ -76,19 +74,18 @@ function HeroSection() {
                 href="/pricing"
                 className="inline-flex items-center justify-center px-8 py-4 border border-white/15 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/25 transition-all text-base"
               >
-                See Our Pricing
+                See What It Costs
               </Link>
             </div>
           </FadeUp>
           <FadeUp delay={0.4}>
             <p className="mt-6 text-sm text-white/30">
-              10% of ad spend + management fee &mdash; published pricing, no
-              discovery call required.
+              Our prices are on the wall, not behind a phone call. 10% of your
+              ad spend + a flat build fee.
             </p>
           </FadeUp>
         </div>
       </div>
-      {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-charcoal to-transparent" />
     </section>
   );
@@ -110,7 +107,7 @@ function TrustBar() {
     <section className="py-10 bg-charcoal border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <p className="text-center text-xs tracking-[0.2em] uppercase text-white/25 mb-8">
-          Platforms we build on
+          We build on these platforms
         </p>
         <LogoCarousel>
           {platforms.map((name) => (
@@ -127,17 +124,17 @@ function TrustBar() {
   );
 }
 
-/* ─── STATS (animated counters like Disruptive) ─── */
+/* ─── STATS ─── */
 function StatsSection() {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-8" staggerDelay={0.15}>
           {[
-            { value: 62, suffix: "%", label: "of marketers have considered firing their agency for lack of transparency" },
-            { value: 76, suffix: "%", label: "of marketing spend is wasted on traffic that doesn't convert" },
-            { value: 3, suffix: "–4x", label: "more revenue from the same ad spend when you fix the post-click path" },
-            { value: 90, suffix: "+", label: "days minimum to build, test, and prove a complete conversion system" },
+            { value: 62, suffix: "%", label: "of business owners have thought about firing their agency over hidden reports" },
+            { value: 76, suffix: "%", label: "of ad budgets burn through pages that were never built to sell" },
+            { value: 3, suffix: "–4x", label: "more buyers from the same spend when you fix what sits between the click and the sale" },
+            { value: 90, suffix: "+", label: "days to build, test, and prove a machine that runs without you watching it" },
           ].map((stat) => (
             <StaggerItem key={stat.label}>
               <div className="text-center">
@@ -166,16 +163,16 @@ function ProblemSection() {
                 The Real Problem
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold text-charcoal tracking-tight leading-tight">
-                The problem isn&apos;t your ads.
+                Your ad works fine.
                 <br />
-                It&apos;s what happens after the click.
+                The page behind it doesn&apos;t.
               </h2>
               <p className="mt-6 text-lg text-slate leading-relaxed">
-                Cold traffic &mdash; people who have never heard of you &mdash;
-                needs a specific journey before they&apos;ll buy. An ad click is
-                the beginning, not the destination. Without the right
-                infrastructure between the click and the sale, every dollar you
-                spend is a dollar you donate to the platform.
+                A stranger clicks your ad. She lands on a page that looks like
+                every other page she saw today. Nothing tells her why you&apos;re
+                different. Nothing shows proof. Nothing walks her toward a
+                decision. So she hits the back button. You paid for that visit.
+                She gave you three seconds. And your page wasted all of them.
               </p>
             </div>
           </FadeLeft>
@@ -184,23 +181,23 @@ function ProblemSection() {
               {[
                 {
                   icon: "01",
-                  title: "You changed the creative. Nothing moved.",
-                  desc: "Because the creative wasn't the problem.",
+                  title: "You swapped the images and the headlines. Nothing changed.",
+                  desc: "Because the pictures on the ad were never the problem.",
                 },
                 {
                   icon: "02",
-                  title: "You tightened the targeting. Nothing moved.",
-                  desc: "Because the targeting wasn't the problem either.",
+                  title: "You narrowed the audience. Still nothing.",
+                  desc: "Because the right people landed on the wrong page.",
                 },
                 {
                   icon: "03",
-                  title: "You hired an agency. Nothing moved.",
-                  desc: "Because they optimized the ad, not what happens after it.",
+                  title: "You handed it to an agency. Same flat line.",
+                  desc: "Because they polished the ad and ignored everything after it.",
                 },
                 {
                   icon: "04",
-                  title: "You increased the budget. It got worse.",
-                  desc: "Because you poured more traffic into a broken funnel.",
+                  title: "You doubled the budget. It got worse.",
+                  desc: "Because you pushed twice the water through a pipe with holes in it.",
                 },
               ].map((item) => (
                 <div
@@ -224,49 +221,49 @@ function ProblemSection() {
   );
 }
 
-/* ─── HOW IT WORKS (Timeline like Disruptive) ─── */
+/* ─── HOW IT WORKS ─── */
 function HowItWorksSection() {
   const steps = [
     {
       number: "01",
-      title: "Credibility Assets",
+      title: "Proof Layer",
       description:
-        "Case studies, testimonials, and the proof framework that cold traffic needs before it will click. We build the evidence layer that makes strangers trust you.",
+        "We gather your best wins — screenshots, before-and-afters, customer stories — and turn them into a wall of evidence. A stranger sees this before she sees a price. By the time she scrolls past it, she already believes you can deliver.",
       detail: "Month 1",
     },
     {
       number: "02",
-      title: "Advertorial / Pre-Sell",
+      title: "The Warm-Up Article",
       description:
-        "The bridge between the ad and the sale. A content piece that educates, builds belief, and pre-qualifies the prospect before they ever see a price.",
+        "A short piece that sits between your ad and your offer. It teaches the reader something useful, names the problem she already feels, and walks her toward your solution. She arrives at your sales page already nodding.",
       detail: "Month 1–2",
     },
     {
       number: "03",
-      title: "VSL / Sales Page",
+      title: "Sales Page / Video",
       description:
-        "The conversion engine. Built for cold traffic, tested against real data, and optimized for revenue — not vanity metrics.",
+        "This is where the sale happens. We write a page — or film a video — built around one question: why does your solution work when others don't? Every line answers that question. Every proof point lands at the right moment.",
       detail: "Month 1–2",
     },
     {
       number: "04",
-      title: "Product Page + Checkout",
+      title: "Checkout Flow",
       description:
-        "Friction-free purchase flow that maintains the trust and momentum built in every prior stage. Every element is tested.",
+        "She decided to buy. Now nothing should slow her down. We strip away distractions, remove unnecessary steps, and keep the trust alive from the last page she saw all the way through to the confirmation screen.",
       detail: "Month 2",
     },
     {
       number: "05",
-      title: "Email Sequences",
+      title: "Follow-Up Messages",
       description:
-        "Automated follow-up that captures the 70–90% who didn’t buy on the first visit. Recovery, nurture, and segmented messaging.",
+        "Seven out of ten visitors leave without buying — even on good pages. We write a sequence of messages that reaches them after they leave: reminders, proof, answers to the hesitation they felt. Many come back and buy within a week.",
       detail: "Month 2–3",
     },
     {
       number: "06",
-      title: "Continuous Testing",
+      title: "Test, Measure, Sharpen",
       description:
-        "Every stage is measured against revenue. We test, learn, and compound improvements every week. You see every result.",
+        "We run two versions of each piece, side by side, and watch which one sells more. Every week, the weaker version dies and the winner stays. Over months, this compounds. Your numbers climb without you touching anything.",
       detail: "Ongoing",
     },
   ];
@@ -280,21 +277,20 @@ function HowItWorksSection() {
               The Climb Stack
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-              <TextReveal text="Six stages. One system. Every piece connected to revenue." />
+              <TextReveal text="Six pieces. One path. Each one hands the buyer to the next." />
             </h2>
             <p className="mt-6 text-lg text-white/50 leading-relaxed">
-              The reason individual pieces haven&apos;t worked is that each one
-              was optimized in isolation. We build the connection between every
-              stage.
+              You hired a copywriter who didn&apos;t know your ad angle. You
+              hired an email person who didn&apos;t know your landing page. Each
+              piece was built in a separate room. That&apos;s why none of them
+              fit together. We build every piece in the same room, at the same
+              time, pointing at the same sale.
             </p>
           </div>
         </FadeUp>
 
-        {/* Timeline layout */}
         <div className="relative">
-          {/* Vertical line */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-gold/40 via-gold/20 to-transparent" />
-
           <div className="space-y-8 lg:space-y-0">
             {steps.map((step, i) => (
               <FadeUp key={step.number} delay={i * 0.1}>
@@ -303,11 +299,9 @@ function HowItWorksSection() {
                     i % 2 === 0 ? "" : "lg:direction-rtl"
                   }`}
                 >
-                  {/* Timeline dot */}
                   <div className="hidden lg:block absolute left-1/2 top-8 -translate-x-1/2 z-10">
                     <div className="w-4 h-4 rounded-full bg-gold shadow-[0_0_20px_rgba(198,164,78,0.4)]" />
                   </div>
-
                   <div
                     className={`${i % 2 === 0 ? "lg:text-right lg:pr-16" : "lg:col-start-2 lg:pl-16"}`}
                   >
@@ -350,20 +344,21 @@ function AntiBlackBoxSection() {
                 No Black Box
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
-                You&apos;ll never wonder
+                You will see every nail
                 <br />
-                where your money went.
+                we hammer into this thing.
               </h2>
               <p className="mt-6 text-lg text-slate leading-relaxed">
-                Every week, you see what was built, what was tested, what the
-                conversion rate is at each funnel stage, and what the revenue
-                attribution shows.
+                Every week, you open a report. It shows what we built, what we
+                tested, and what moved the needle. Not a glossy PDF full of
+                impressions. A short document tied to the money that came in and
+                the money that went out.
               </p>
               <GlowLine className="my-8" />
               <p className="text-sm text-slate italic">
-                &ldquo;Reporting that&apos;s all clicks and impressions with
-                zero connection to revenue.&rdquo; &mdash; That&apos;s what
-                you&apos;re leaving behind.
+                &ldquo;They sent me beautiful reports. Forty pages. Not a single
+                line explained why my bank account looked the same.&rdquo;
+                &mdash; That era is over.
               </p>
             </div>
           </FadeLeft>
@@ -371,8 +366,8 @@ function AntiBlackBoxSection() {
             <StaggerContainer className="space-y-4" staggerDelay={0.12}>
               {[
                 {
-                  title: "Published pricing",
-                  desc: "10% of ad spend + management fee. You see it before we ever talk.",
+                  title: "Prices on the wall",
+                  desc: "10% of ad spend + a flat build fee. You read it here before we ever speak. No guessing.",
                   icon: (
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -380,8 +375,8 @@ function AntiBlackBoxSection() {
                   ),
                 },
                 {
-                  title: "Weekly deliverable reports",
-                  desc: "What was built, what was tested, what moved. Connected to revenue, not impressions.",
+                  title: "Weekly proof of work",
+                  desc: "What we built this week. What we tested. What won. What lost. Tied to your revenue, not our jargon.",
                   icon: (
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -389,8 +384,8 @@ function AntiBlackBoxSection() {
                   ),
                 },
                 {
-                  title: "Revenue-connected metrics",
-                  desc: "Ad spend → CPA → conversion rate per stage → revenue delta. No vanity numbers.",
+                  title: "Numbers that touch the bank",
+                  desc: "How much you spent. How many people bought. What each buyer cost you. What changed from last week.",
                   icon: (
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -398,8 +393,8 @@ function AntiBlackBoxSection() {
                   ),
                 },
                 {
-                  title: "You keep everything",
-                  desc: "Every asset we build is yours. If you leave, you walk away with a complete conversion system.",
+                  title: "You own everything we build",
+                  desc: "Walk away after three months and you take every page, every email, every asset with you. Nothing held hostage.",
                   icon: (
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -427,23 +422,23 @@ function AntiBlackBoxSection() {
   );
 }
 
-/* ─── SOCIAL PROOF / QUOTES ─── */
+/* ─── SOCIAL PROOF ─── */
 function SocialProofSection() {
   const quotes = [
     {
       quote:
-        "My ads aren’t failing because creative sucks. They’re failing because the person seeing them doesn’t have enough reason to believe me yet.",
-      attribution: "Ecommerce brand owner, $45K/mo ad spend",
+        "My ads aren't failing because the pictures are wrong. They're failing because the person who clicks has no reason to believe me yet. She lands cold and leaves cold.",
+      attribution: "Online store owner, $45K/month in ads",
     },
     {
       quote:
-        "When they can’t explain what they’re doing without jargon and you leave every meeting confused about where your money is going — that’s not complexity, it’s a smokescreen.",
+        "They couldn't explain what they were doing without hiding behind words I didn't understand. I left every meeting more confused than when I walked in. That's not complexity — that's a curtain.",
       attribution: "Former agency client",
     },
     {
       quote:
-        "All your work over two months produced no results. There was no strategy, just retargeting and a lot of complaints and excuses.",
-      attribution: "Business owner, $28K wasted",
+        "Two months of work. Not a single new customer. When I asked what went wrong, they pointed the finger at me. I was the one writing the cheques.",
+      attribution: "Business owner, $28K spent",
     },
   ];
 
@@ -453,11 +448,11 @@ function SocialProofSection() {
         <FadeUp>
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
-              Sound familiar?
+              Does this sound like your story?
             </h2>
             <p className="mt-4 text-lg text-slate">
-              These are real words from real business owners spending real money
-              on ads that don&apos;t convert.
+              Real words from real owners who watched their ad budgets disappear
+              into someone else&apos;s pockets.
             </p>
           </div>
         </FadeUp>
@@ -489,11 +484,11 @@ function WhoThisIsForSection() {
         <FadeUp>
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
-              Built for a specific kind of business.
+              We built this for one kind of business.
             </h2>
             <p className="mt-4 text-slate">
-              We don&apos;t work with everyone. Here&apos;s how to know if this
-              is the right fit.
+              Not everyone. Not most people. Read both columns and you&apos;ll
+              know in thirty seconds.
             </p>
           </div>
         </FadeUp>
@@ -504,15 +499,15 @@ function WhoThisIsForSection() {
                 <span className="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center text-sm font-bold">
                   &#10003;
                 </span>
-                This is for you if&hellip;
+                Walk through this door if&hellip;
               </h3>
               <ul className="space-y-4">
                 {[
-                  "You’re spending $3K–$100K+/month on Google or Meta ads",
-                  "You have product-market fit — customers who find you tend to stay",
-                  "You’ve tried at least one agency, freelancer, or DIY approach",
-                  "You want to understand what’s being built, why, and what the data says",
-                  "You’re willing to commit 3 months to see real infrastructure built",
+                  "You spend $3K–$100K every month on Google or Meta ads and the bank statement doesn't match the dashboard",
+                  "Your product sells well once people find it — the machine that finds them is the broken part",
+                  "You've hired at least one agency, one freelancer, or burned a weekend doing it yourself",
+                  "You want to see what's being built, why it exists, and whether it's working — every single week",
+                  "You can commit three months, because you know a house isn't built in a weekend",
                 ].map((item) => (
                   <li key={item} className="flex gap-3 text-sm text-charcoal">
                     <span className="text-gold mt-0.5 shrink-0">&#9679;</span>
@@ -528,15 +523,15 @@ function WhoThisIsForSection() {
                 <span className="w-8 h-8 rounded-full bg-charcoal/5 text-slate flex items-center justify-center text-sm">
                   &#10007;
                 </span>
-                This isn&apos;t for you if&hellip;
+                This door is closed if&hellip;
               </h3>
               <ul className="space-y-4">
                 {[
-                  "You’re looking for someone to just “run your ads”",
-                  "You want guaranteed ROAS numbers before we’ve seen your account",
-                  "You need results in 2 weeks, not 2–3 months",
-                  "You’re spending less than $3,000/month on ads",
-                  "You want a “set it and forget it” service with no involvement",
+                  "You want someone to press buttons inside an ad platform and call it strategy",
+                  "You expect a guaranteed return number before we've looked under the hood",
+                  "You need a miracle in two weeks — real building takes real time",
+                  "You spend less than $3,000 a month on ads — the economics don't work below that floor",
+                  "You want to hand it off and never look at it again — this works only if you stay in the room",
                 ].map((item) => (
                   <li key={item} className="flex gap-3 text-sm text-slate">
                     <span className="text-charcoal/20 mt-0.5 shrink-0">
@@ -554,32 +549,32 @@ function WhoThisIsForSection() {
   );
 }
 
-/* ─── FAQ (Accordion like Pilothouse) ─── */
+/* ─── FAQ ─── */
 function FAQSection() {
   const faqs = [
     {
-      q: "How is this different from every other agency?",
-      a: "We don’t claim to be different. We demonstrate structural difference. Published pricing before you talk to anyone. A named system with each component defined. Case studies that show ad spend, CPA before, CPA after, and revenue delta — not ROAS percentages. The transparency is visible, not claimed.",
+      q: "Every agency says they're different. Why should I believe you?",
+      a: "Don't believe us. Look at the evidence instead. Our prices are published on this site — you saw them before we spoke. Our case studies show what was spent, what we charged, and what came back in revenue. Every other agency in this space hides both. That's not a claim of difference. It's a structural fact you can verify in two clicks.",
     },
     {
-      q: "Why is there a 3-month minimum?",
-      a: "Because it takes 90 days to build the infrastructure, run the first tests, and have real data to show you. We don’t take clients we don’t believe we can produce results for. The minimum exists because we’re asking you to give the system enough time to prove itself — not because we want to lock you in.",
+      q: "Why do I have to commit for three months?",
+      a: "Because a house isn't built in a weekend. Month one: we build the pages, the proof, the warm-up article. Month two: we wire the email sequences and test the checkout. Month three: we run two versions of everything, side by side, and watch the numbers. Cut that short and you're judging a half-finished building. We won't take your money if we don't believe three months is enough time to move your numbers.",
     },
     {
-      q: "What if my problem is the offer, not the funnel?",
-      a: "If your offer doesn’t work, no funnel will fix it — and we’ll tell you that upfront in the diagnostic, not six months in. The fact that we diagnose before we commit is itself the answer to this question.",
+      q: "What if the real problem is what I sell, not what sits between the ad and the sale?",
+      a: "Then no amount of page-building will save it — and we'll tell you that in the diagnostic, before you spend a cent with us. We'd rather lose a client on day one than waste three months of your money proving something we already suspected. The diagnostic exists precisely so this question gets answered first.",
     },
     {
-      q: "Doesn’t the percentage-of-spend model incentivize you to push higher budgets?",
-      a: "Yes — which is why we don’t recommend scaling spend until the funnel can absorb it. If we push spend before it converts, you leave. Our retention depends on your results. The transparent reporting means you can see whether higher spend is justified.",
+      q: "You charge a percentage of my ad spend. Won't you just push me to spend more?",
+      a: "We earn more when you spend more — true. But if we push your budget into a page that doesn't sell, you fire us. So our incentive is simple: make the path work first, then scale the spend. You'll see every number in the weekly report. If the cost per buyer goes up when we increase spend, we pull back. You watch that happen in real time.",
     },
     {
-      q: "What do I actually receive each week?",
-      a: "A report showing what was built, what was tested, what the conversion rate is at each funnel stage, and what the revenue attribution shows. No PDFs full of impressions and CTR. Real metrics connected to real money.",
+      q: "What exactly lands in my inbox every week?",
+      a: "A short document. It shows what we built this week, what we tested, what won, and what lost. Below that: how much you spent on ads, how many people bought, what each buyer cost, and how that compares to last week. No forty-page PDF. No graphs about impressions. Just the numbers that touch your bank account.",
     },
     {
-      q: "What happens if I leave after 3 months?",
-      a: "You walk away with everything we built — credibility assets, advertorials, sales pages, email sequences, checkout optimizations. It’s all yours. We don’t hold assets hostage.",
+      q: "What happens if I walk away after three months?",
+      a: "You take everything. Every landing page. Every email sequence. Every sales page. Every warm-up article. Every test result. You own all of it. We don't hold your work hostage. If we've done our job, you won't want to leave. If we haven't, you shouldn't have to beg for your own assets.",
     },
   ];
 
@@ -589,7 +584,7 @@ function FAQSection() {
         <FadeUp>
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
-              Questions you should be asking.
+              Questions you should ask before signing anything.
             </h2>
           </div>
         </FadeUp>
@@ -612,21 +607,21 @@ function CTASection() {
             Start Here
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-            Stop paying for clicks
+            You already have the traffic.
             <br />
-            that don&apos;t convert.
+            Let&apos;s build the road it lands on.
           </h2>
           <p className="mt-6 text-lg text-white/60 leading-relaxed max-w-xl mx-auto">
-            Start with a diagnostic. We&apos;ll show you exactly where your
-            funnel is breaking and whether we can help &mdash; before you spend
-            a dollar.
+            Answer ten questions. We&apos;ll show you exactly where people
+            drop off between the ad and the sale &mdash; and which piece to
+            fix first. You keep the diagnostic whether you hire us or not.
           </p>
           <div className="mt-10">
             <Link
               href="/apply"
               className="group inline-flex items-center justify-center px-10 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light transition-all text-lg hover:shadow-[0_0_40px_rgba(198,164,78,0.3)]"
             >
-              Get Your Free Diagnostic
+              Show Me Where It Breaks
               <svg
                 className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
                 fill="none"
@@ -643,7 +638,7 @@ function CTASection() {
             </Link>
           </div>
           <p className="mt-6 text-sm text-white/30">
-            Takes 3 minutes. No commitment. You keep the diagnostic regardless.
+            Three minutes. Ten questions. No commitment.
           </p>
         </ScaleUp>
       </div>

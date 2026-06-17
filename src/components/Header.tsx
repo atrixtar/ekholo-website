@@ -41,7 +41,7 @@ export function Header() {
             {[
               { href: "/#how-it-works", label: "How It Works" },
               { href: "/pricing", label: "Pricing" },
-              { href: "/case-studies", label: "Case Studies" },
+              { href: "/case-studies", label: "Live Audits" },
               { href: "/blog", label: "Insights" },
             ].map((link) => (
               <Link
@@ -60,7 +60,7 @@ export function Header() {
               href="/apply"
               className="inline-flex items-center justify-center px-6 py-2.5 bg-gold text-charcoal text-sm font-semibold rounded-full hover:bg-gold-light transition-colors"
             >
-              Get Your Diagnostic
+              Show Me Where It Breaks
             </Link>
           </nav>
 
@@ -106,7 +106,7 @@ export function Header() {
           {[
             { href: "/#how-it-works", label: "How It Works" },
             { href: "/pricing", label: "Pricing" },
-            { href: "/case-studies", label: "Case Studies" },
+            { href: "/case-studies", label: "Live Audits" },
             { href: "/blog", label: "Insights" },
           ].map((link) => (
             <Link
@@ -123,7 +123,7 @@ export function Header() {
             onClick={() => setMobileOpen(false)}
             className="block w-full text-center px-6 py-2.5 bg-gold text-charcoal text-sm font-semibold rounded-full mt-2"
           >
-            Get Your Diagnostic
+            Show Me Where It Breaks
           </Link>
         </div>
       </motion.div>
