@@ -10,24 +10,36 @@ import {
   LogoCarousel,
   GlowLine,
   TextReveal,
+  FloatingParticles,
+  GoldGlow,
+  GlassCard,
+  TiltCard,
+  ParallaxLayer,
 } from "@/components/Animations";
 import { FAQAccordion } from "@/components/FAQ";
 
 /* ─── HERO ─── */
 function HeroSection() {
   return (
-    <section className="relative bg-charcoal text-white overflow-hidden min-h-[90vh] flex items-center">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_40%,rgba(198,164,78,0.1),transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_80%_20%,rgba(198,164,78,0.05),transparent_50%)]" />
+    <section className="relative bg-charcoal text-white overflow-hidden min-h-[90vh] flex items-center noise">
+      {/* Layered atmospheric gradients */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_40%,rgba(198,164,78,0.12),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_80%_20%,rgba(198,164,78,0.06),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_40%_at_50%_80%,rgba(198,164,78,0.08),transparent_50%)]" />
+      {/* Grid overlay */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-36 w-full">
+      {/* Floating gold particles */}
+      <FloatingParticles count={14} />
+      {/* Central gold glow */}
+      <GoldGlow size={600} className="-translate-y-[10%]" />
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-36 w-full">
         <div className="max-w-3xl">
           <FadeUp>
             <p className="text-gold text-sm font-semibold tracking-[0.25em] uppercase mb-6">
@@ -53,7 +65,7 @@ function HeroSection() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/apply"
-                className="group inline-flex items-center justify-center px-8 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light transition-all text-base hover:shadow-[0_0_30px_rgba(198,164,78,0.3)]"
+                className="btn-glow group inline-flex items-center justify-center px-8 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light transition-all text-base hover:shadow-[0_0_30px_rgba(198,164,78,0.3)] hover:scale-[1.03]"
               >
                 Show Me Where It Breaks
                 <svg
@@ -72,7 +84,7 @@ function HeroSection() {
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center justify-center px-8 py-4 border border-white/15 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/25 transition-all text-base"
+                className="inline-flex items-center justify-center px-8 py-4 border border-white/15 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/25 transition-all text-base glass"
               >
                 See What It Costs
               </Link>
@@ -129,7 +141,7 @@ function StatsSection() {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-8" staggerDelay={0.15}>
+        <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.15}>
           {[
             { value: 62, suffix: "%", label: "of business owners have thought about firing their agency over hidden reports" },
             { value: 76, suffix: "%", label: "of ad budgets burn through pages that were never built to sell" },
@@ -137,12 +149,14 @@ function StatsSection() {
             { value: 90, suffix: "+", label: "days to build, test, and prove a machine that runs without you watching it" },
           ].map((stat) => (
             <StaggerItem key={stat.label}>
-              <div className="text-center">
-                <p className="text-4xl sm:text-5xl font-bold text-gold">
-                  <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-                </p>
-                <p className="mt-3 text-sm text-slate leading-relaxed">{stat.label}</p>
-              </div>
+              <TiltCard>
+                <div className="text-center p-6 rounded-2xl bg-background border border-charcoal/5 card-lift border-glow">
+                  <p className="text-4xl sm:text-5xl font-bold text-gradient-gold">
+                    <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                  </p>
+                  <p className="mt-3 text-sm text-slate leading-relaxed">{stat.label}</p>
+                </div>
+              </TiltCard>
             </StaggerItem>
           ))}
         </StaggerContainer>
@@ -202,7 +216,7 @@ function ProblemSection() {
               ].map((item) => (
                 <div
                   key={item.icon}
-                  className="flex gap-4 p-5 rounded-xl bg-white border border-charcoal/5 hover:border-gold/20 transition-colors"
+                  className="flex gap-4 p-5 rounded-xl bg-white border border-charcoal/5 card-lift border-glow"
                 >
                   <span className="text-sm font-mono font-bold text-gold mt-0.5 shrink-0">
                     {item.icon}
@@ -269,7 +283,7 @@ function HowItWorksSection() {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 lg:py-28 bg-charcoal text-white">
+    <section id="how-it-works" className="relative py-20 lg:py-28 bg-charcoal text-white noise overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <FadeUp>
           <div className="max-w-3xl mb-16">
@@ -301,11 +315,12 @@ function HowItWorksSection() {
                 >
                   <div className="hidden lg:block absolute left-1/2 top-8 -translate-x-1/2 z-10">
                     <div className="w-4 h-4 rounded-full bg-gold shadow-[0_0_20px_rgba(198,164,78,0.4)]" />
+                    <div className="absolute inset-0 rounded-full bg-gold animate-ping opacity-30" />
                   </div>
                   <div
                     className={`${i % 2 === 0 ? "lg:text-right lg:pr-16" : "lg:col-start-2 lg:pl-16"}`}
                   >
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-gold/20 transition-all hover:bg-white/[0.07] group">
+                    <div className="p-6 rounded-2xl glass border-glow group">
                       <div className={`flex items-center gap-3 mb-3 ${i % 2 === 0 ? "lg:justify-end" : ""}`}>
                         <span className="text-xs font-mono font-bold text-gold tracking-wider">
                           {step.number}
@@ -403,7 +418,7 @@ function AntiBlackBoxSection() {
                 },
               ].map((item) => (
                 <StaggerItem key={item.title}>
-                  <div className="flex gap-4 p-5 rounded-xl bg-background border border-charcoal/5 hover:border-gold/20 transition-all hover:shadow-sm group">
+                  <div className="flex gap-4 p-5 rounded-xl bg-background border border-charcoal/5 card-lift border-glow group">
                     <div className="shrink-0 w-10 h-10 rounded-lg bg-gold/10 text-gold flex items-center justify-center group-hover:bg-gold/20 transition-colors">
                       {item.icon}
                     </div>
@@ -459,8 +474,8 @@ function SocialProofSection() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.15}>
           {quotes.map((item, i) => (
             <StaggerItem key={i}>
-              <blockquote className="h-full p-8 rounded-2xl bg-white border border-charcoal/5 hover:shadow-lg transition-shadow flex flex-col">
-                <div className="text-gold text-4xl leading-none mb-4">&ldquo;</div>
+              <blockquote className="h-full p-8 rounded-2xl bg-white border border-charcoal/5 card-lift border-glow flex flex-col">
+                <div className="text-gold text-4xl leading-none mb-4" style={{ textShadow: "0 0 30px rgba(198,164,78,0.3)" }}>&ldquo;</div>
                 <p className="text-base text-charcoal leading-relaxed flex-1">
                   {item.quote}
                 </p>
@@ -494,7 +509,7 @@ function WhoThisIsForSection() {
         </FadeUp>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <FadeLeft>
-            <div className="p-8 rounded-2xl bg-background border border-gold/10">
+            <div className="p-8 rounded-2xl bg-background border border-gold/10 card-lift border-glow">
               <h3 className="text-lg font-bold text-charcoal flex items-center gap-3 mb-6">
                 <span className="w-8 h-8 rounded-full bg-gold/10 text-gold flex items-center justify-center text-sm font-bold">
                   &#10003;
@@ -599,9 +614,11 @@ function FAQSection() {
 /* ─── FINAL CTA ─── */
 function CTASection() {
   return (
-    <section className="relative py-24 lg:py-32 bg-charcoal text-white overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(198,164,78,0.08),transparent_60%)]" />
-      <div className="relative max-w-3xl mx-auto px-6 lg:px-8 text-center">
+    <section className="relative py-24 lg:py-32 bg-charcoal text-white overflow-hidden noise">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(198,164,78,0.1),transparent_60%)]" />
+      <FloatingParticles count={8} />
+      <GoldGlow size={500} className="-translate-y-[20%]" />
+      <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center">
         <ScaleUp>
           <p className="text-gold text-sm font-semibold tracking-[0.25em] uppercase mb-6">
             Start Here
@@ -619,7 +636,7 @@ function CTASection() {
           <div className="mt-10">
             <Link
               href="/apply"
-              className="group inline-flex items-center justify-center px-10 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light transition-all text-lg hover:shadow-[0_0_40px_rgba(198,164,78,0.3)]"
+              className="btn-glow group inline-flex items-center justify-center px-10 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light transition-all text-lg hover:shadow-[0_0_40px_rgba(198,164,78,0.3)] hover:scale-[1.03]"
             >
               Show Me Where It Breaks
               <svg

@@ -663,11 +663,13 @@ export default function DiagnosticQuestionnaire() {
             One last step
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-            Where should we send your results?
+            Before we hand you the results —
           </h2>
           <p className="text-sm text-white/50 mb-8 leading-relaxed">
-            We&apos;ll review your answers and reach out within 24 hours with a
-            personalised diagnostic.
+            Someone on our team is going to read every answer you just gave.
+            Not a bot. A person who&apos;s going to look at your business,
+            think about it, and reach out within 24 hours with something
+            worth your time.
           </p>
 
           <div className="space-y-5">
@@ -915,7 +917,7 @@ export default function DiagnosticQuestionnaire() {
               {/* Closing */}
               <div className="text-center pt-4 mt-8 border-t border-white/5">
                 <p className="text-sm text-white/50">
-                  Results have been noted. Expect a WhatsApp message within 24 hours.
+                  Your answers are sitting on someone&apos;s desk right now. Not in a queue. On a desk. Expect a WhatsApp message within 24 hours from a person who&apos;s actually read them.
                 </p>
               </div>
             </div>
@@ -1011,7 +1013,7 @@ export default function DiagnosticQuestionnaire() {
               {/* Closing */}
               <div className="text-center pt-4 border-t border-white/5">
                 <p className="text-sm text-white/50">
-                  Results have been noted. Expect a WhatsApp message within 24 hours.
+                  Your answers are sitting on someone&apos;s desk right now. Not in a queue. On a desk. Expect a WhatsApp message within 24 hours from a person who&apos;s actually read them.
                 </p>
               </div>
             </div>

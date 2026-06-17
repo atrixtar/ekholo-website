@@ -105,10 +105,10 @@ export default function PricingPage() {
             {tiers.map((tier) => (
               <StaggerItem key={tier.name}>
                 <div
-                  className={`rounded-2xl p-8 flex flex-col h-full transition-all hover:shadow-xl ${
+                  className={`rounded-2xl p-8 flex flex-col h-full card-lift ${
                     tier.highlighted
                       ? "bg-charcoal text-white ring-2 ring-gold shadow-[0_0_40px_rgba(198,164,78,0.1)]"
-                      : "bg-white border border-charcoal/10 hover:border-gold/20"
+                      : "bg-white border border-charcoal/10 border-glow"
                   }`}
                 >
                   <div>
