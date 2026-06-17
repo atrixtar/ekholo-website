@@ -196,10 +196,73 @@ const levelDescriptions: Record<number, string> = {
   4: "The engine works. Now it needs systems so it runs without you in every conversation. Post-purchase follow-up, a repeat-buyer path, and referral triggers are where your next revenue jump lives.",
 };
 
-// Anthony's WhatsApp number — replace with actual number
 const EKHOLO_WHATSAPP = "25488120047";
 
-/* ─── LEVEL 2 ROADMAP GENERATOR ─── */
+/* ─── INTAKE CONFIG PER LEVEL ─── */
+interface IntakeConfig {
+  heading: string;
+  subtitle: string;
+  q1Label: string;
+  q1Placeholder: string;
+  q2Label: string;
+  q2Placeholder: string;
+  buttonLabel: string;
+  whatsappText: (score: number, levelLabel: string) => string;
+  upgradePrompt: string;
+}
+
+const intakeConfig: Record<number, IntakeConfig> = {
+  1: {
+    heading: "Two questions. Then your foundation checklist.",
+    subtitle: "Tell us what you sell and what proof you have. We’ll build you a four-step plan to lay the groundwork.",
+    q1Label: "What do you sell, in one sentence?",
+    q1Placeholder: "e.g. Online fitness coaching for busy professionals...",
+    q2Label: "What proof do you have right now that your solution works?",
+    q2Placeholder: "e.g. A few happy clients but nothing documented anywhere...",
+    buttonLabel: "Build my foundation plan",
+    whatsappText: (score, label) =>
+      `Hi, I just completed the Ekholo diagnostic. I scored ${score}/40 and landed at ${label}. I'd like help building the foundation.`,
+    upgradePrompt: "Want someone to build this foundation with you?",
+  },
+  2: {
+    heading: "Two questions. Then your four-step plan.",
+    subtitle: "Tell us where people fall off and why you think they don’t buy. We’ll turn your answers into a concrete roadmap.",
+    q1Label: "Where do interested people drop off in your process?",
+    q1Placeholder: "e.g. They DM me, I send pricing, then I never hear back...",
+    q2Label: "Why do you think they don’t end up buying?",
+    q2Placeholder: "e.g. I think they don't see enough proof that it works...",
+    buttonLabel: "Build my roadmap",
+    whatsappText: (score, label) =>
+      `Hi, I just completed the Ekholo diagnostic. I scored ${score}/40 and landed at ${label}. I'd like to talk about the done-with-you option.`,
+    upgradePrompt: "Want this built with you rather than by you?",
+  },
+  3: {
+    heading: "Two questions. Then your economics fix.",
+    subtitle: "Tell us what each buyer costs and what each sale is worth. We’ll show you where the numbers break.",
+    q1Label: "Roughly, what does it cost you to get one paying customer right now?",
+    q1Placeholder: "e.g. About $120 in ad spend per sale, maybe more...",
+    q2Label: "What is the average sale worth to you?",
+    q2Placeholder: "e.g. $300 upfront, sometimes they come back for another $200...",
+    buttonLabel: "Show me where the numbers break",
+    whatsappText: (score, label) =>
+      `Hi, I just completed the Ekholo diagnostic. I scored ${score}/40 and landed at ${label}. I'd like to talk about fixing the numbers.`,
+    upgradePrompt: "Want us to fix these numbers with you?",
+  },
+  4: {
+    heading: "Two questions. Then your scaling plan.",
+    subtitle: "Tell us what still depends on you and where growth hits a wall. We’ll map the four steps to get past it.",
+    q1Label: "What still needs you personally to run every day?",
+    q1Placeholder: "e.g. I still close every sale myself, nothing is automated...",
+    q2Label: "Where does growth stall when you push harder?",
+    q2Placeholder: "e.g. When I increase ad spend the cost per buyer jumps and quality drops...",
+    buttonLabel: "Build my scaling plan",
+    whatsappText: (score, label) =>
+      `Hi, I just completed the Ekholo diagnostic. I scored ${score}/40 and landed at ${label}. I'd like to talk about scaling.`,
+    upgradePrompt: "Want us to build the systems that let you step back?",
+  },
+};
+
+/* ─── ROADMAP GENERATOR ─── */
 interface RoadmapStep {
   number: number;
   label: string;
@@ -209,56 +272,171 @@ interface RoadmapStep {
 }
 
 function generateRoadmap(
-  dropoffAnswer: string,
-  whyNotBuyAnswer: string,
+  level: number,
+  q1: string,
+  q2: string,
   componentsList: string[],
   goalLabel: string,
 ): RoadmapStep[] {
-  const steps: RoadmapStep[] = [];
+  const a1 = q1.trim();
+  const a2 = q2.trim();
 
-  // Step 1 — fix the drop-off point (drawn from Q1 intake)
-  steps.push({
-    number: 1,
-    label: "Fix the drop-off point",
-    diagnosis: `You said people drop off here: "${dropoffAnswer.trim()}." That is where the leak sits.`,
-    action: componentsList[0]
-      ? `Build a ${componentsList[0].toLowerCase()} that catches them at that exact moment.`
-      : "Map the exact page or step where they leave and rebuild it with proof and a clear next step.",
-    outcome: "Fewer people vanish at the point where you lose them most.",
-  });
+  if (level === 1) {
+    return [
+      {
+        number: 1,
+        label: "Write your positioning",
+        diagnosis: `You sell: "${a1}." Before a stranger gives you money, she needs to understand — in one sentence — why your version is different from every other option she's seen today.`,
+        action: "Write one sentence that says what you do, who it's for, and why it works. Put it at the top of your page.",
+        outcome: "A stranger reads your page and knows within five seconds whether this is for her.",
+      },
+      {
+        number: 2,
+        label: "Document the mechanism",
+        diagnosis: `You need to explain why your solution works — not just what it does. The "why" is what separates you from the competitor she's also considering.`,
+        action: componentsList[1]
+          ? `Build ${componentsList[1].toLowerCase()} — a short explanation of the method behind your results.`
+          : "Write a short explanation of the method or process behind your results. Name it. Make it yours.",
+        outcome: "When she reads this, she thinks: 'This person actually knows how it works — not just what to sell me.'",
+      },
+      {
+        number: 3,
+        label: "Collect and display proof",
+        diagnosis: `You said your current proof is: "${a2}." That's not enough for a stranger to trust you with her money.`,
+        action: componentsList[2]
+          ? `Start ${componentsList[2].toLowerCase()} — screenshots, before/afters, short quotes from real buyers.`
+          : "Ask your three best customers for a screenshot, a short quote, or a before/after. Put them on the page above the price.",
+        outcome: "The next person who lands on your page sees evidence before she sees an ask.",
+      },
+      {
+        number: 4,
+        label: "Build one offer page",
+        diagnosis: "Right now you're sending people to a general page or explaining things over chat. That splits her attention.",
+        action: componentsList[3]
+          ? `Create a ${componentsList[3].toLowerCase()} with your positioning, mechanism, proof, and one clear action.`
+          : "Build one page that has your positioning at the top, your mechanism in the middle, your proof below it, and one button at the bottom.",
+        outcome: "Every person you send traffic to lands in one place that does one job: make her believe, then ask for the sale.",
+      },
+    ];
+  }
 
-  // Step 2 — address why they don't buy (drawn from Q2 intake)
-  steps.push({
-    number: 2,
-    label: "Answer the hesitation",
-    diagnosis: `You believe they don't buy because: "${whyNotBuyAnswer.trim()}." That hesitation needs a direct answer on the page.`,
-    action: componentsList[1]
-      ? `Use ${componentsList[1].toLowerCase()} to address that objection before they reach the decision point.`
-      : "Write the answer to that objection and place it above your call to action — proof first, ask second.",
-    outcome: "The people who stay past step one now have a reason to move forward instead of a reason to hesitate.",
-  });
+  if (level === 2) {
+    return [
+      {
+        number: 1,
+        label: "Fix the drop-off point",
+        diagnosis: `You said people drop off here: "${a1}." That is where the leak sits.`,
+        action: componentsList[0]
+          ? `Build a ${componentsList[0].toLowerCase()} that catches them at that exact moment.`
+          : "Map the exact page or step where they leave and rebuild it with proof and a clear next step.",
+        outcome: "Fewer people vanish at the point where you lose them most.",
+      },
+      {
+        number: 2,
+        label: "Answer the hesitation",
+        diagnosis: `You believe they don't buy because: "${a2}." That hesitation needs a direct answer on the page.`,
+        action: componentsList[1]
+          ? `Use ${componentsList[1].toLowerCase()} to address that objection before they reach the decision point.`
+          : "Write the answer to that objection and place it above your call to action — proof first, ask second.",
+        outcome: "The people who stay past step one now have a reason to move forward instead of a reason to hesitate.",
+      },
+      {
+        number: 3,
+        label: "Connect the pieces",
+        diagnosis: `Your goal is "${goalLabel.toLowerCase()}," but each piece of your path was built in isolation.`,
+        action: componentsList[2]
+          ? `Wire a ${componentsList[2].toLowerCase()} so that each stage hands the buyer to the next with the right context.`
+          : "Review every transition — ad to page, page to checkout, checkout to follow-up — and make sure each one carries the story forward.",
+        outcome: "The path from first click to sale feels like one conversation, not five disconnected rooms.",
+      },
+      {
+        number: 4,
+        label: "Measure and sharpen",
+        diagnosis: "You now have a connected path. But you don't yet know which piece is the weakest link.",
+        action: "Track where people drop off each week. Test one change at a time. Keep the winner, kill the loser.",
+        outcome: "Every week, the path gets tighter. The numbers climb without you rebuilding anything from scratch.",
+      },
+    ];
+  }
 
-  // Step 3 — connect the pieces
-  steps.push({
-    number: 3,
-    label: "Connect the pieces",
-    diagnosis: `Your goal is "${goalLabel.toLowerCase()}," but each piece of your path was built in isolation.`,
-    action: componentsList[2]
-      ? `Wire a ${componentsList[2].toLowerCase()} so that each stage hands the buyer to the next with the right context.`
-      : "Review every transition — ad to page, page to checkout, checkout to follow-up — and make sure each one carries the story forward.",
-    outcome: "The path from first click to sale feels like one conversation, not five disconnected rooms.",
-  });
+  if (level === 3) {
+    return [
+      {
+        number: 1,
+        label: "Warm up the stranger",
+        diagnosis: `You're spending "${a1}" to get each buyer but sending them straight to a sales page. A stranger who just clicked an ad isn't ready to buy yet.`,
+        action: componentsList[0]
+          ? `Build a ${componentsList[0].toLowerCase()} — a short piece that sits between the ad and the sales page, teaches something useful, and earns trust before the ask.`
+          : "Write a short article that teaches the reader something useful, names the problem she feels, and walks her toward your solution. Put it between the ad and the sales page.",
+        outcome: "She arrives at your sales page already nodding instead of cold and suspicious.",
+      },
+      {
+        number: 2,
+        label: "Rebuild the sales page around proof",
+        diagnosis: `Each sale is worth "${a2}" to you. If the cost to get that sale is eating most of that, the sales page isn't convincing enough.`,
+        action: componentsList[1]
+          ? `Rebuild with a ${componentsList[1].toLowerCase()} — structure it around why your solution works, backed by evidence, not just a list of features.`
+          : "Rewrite the page around one question: why does your solution work when others don't? Every line answers that. Every proof point lands at the right moment.",
+        outcome: "More of the people who read the page decide to buy. The cost per buyer drops because the page does more of the selling.",
+      },
+      {
+        number: 3,
+        label: "Clean up the checkout",
+        diagnosis: "Some people decide to buy but never finish paying. Every extra step, every distraction, every moment of doubt between 'yes' and 'done' loses you money.",
+        action: componentsList[2]
+          ? `Run a ${componentsList[2].toLowerCase()} — strip distractions, remove unnecessary fields, and keep the trust alive from the sales page all the way to the confirmation screen.`
+          : "Remove every unnecessary step between 'add to cart' and 'payment confirmed.' Keep the proof visible. Don't introduce new doubts after she already said yes.",
+        outcome: "The people who decide to buy actually finish buying. You stop losing sales at the last step.",
+      },
+      {
+        number: 4,
+        label: "Follow up after the sale",
+        diagnosis: "A customer who just bought is the warmest person in your world. Most businesses ignore her until they need another sale.",
+        action: componentsList[3]
+          ? `Build a ${componentsList[3].toLowerCase()} — a series of messages after the purchase that asks how it went, offers the next thing, and asks for a referral.`
+          : "Write a sequence of three to five WhatsApp or email messages that go out after purchase: a thank-you, a check-in, a repeat offer, and a referral ask.",
+        outcome: "Buyers come back without you chasing them. Each new customer is worth more because she buys again and sends others.",
+      },
+    ];
+  }
 
-  // Step 4 — measure and sharpen
-  steps.push({
-    number: 4,
-    label: "Measure and sharpen",
-    diagnosis: "You now have a connected path. But you don't yet know which piece is the weakest link.",
-    action: "Track where people drop off each week. Test one change at a time. Keep the winner, kill the loser.",
-    outcome: "Every week, the path gets tighter. The numbers climb without you rebuilding anything from scratch.",
-  });
-
-  return steps;
+  // Level 4
+  return [
+    {
+      number: 1,
+      label: "Systemise the bottleneck",
+      diagnosis: `You said this still needs you personally: "${a1}." That is the ceiling on your growth — the business can't grow past what you can handle in a day.`,
+      action: "Document the exact steps you take, then build a sequence (automated messages, a trained team member, or a tool) that handles it without you.",
+      outcome: "The thing that required your hands now runs on its own. You get hours back every week.",
+    },
+    {
+      number: 2,
+      label: "Build the repeat-buyer path",
+      diagnosis: "You already paid to acquire these customers. Getting them to buy again costs almost nothing — but only if you ask at the right time with the right offer.",
+      action: componentsList[1]
+        ? `Build a ${componentsList[1].toLowerCase()} — a post-purchase sequence that offers the next thing at the moment she's happiest with the last thing.`
+        : "Map the natural next purchase for your best customers. Build a message sequence that offers it 7, 14, and 30 days after the first sale.",
+      outcome: "Revenue goes up without ad spend going up. Each customer becomes worth two or three times what she was worth on day one.",
+    },
+    {
+      number: 3,
+      label: "Turn buyers into referral triggers",
+      diagnosis: `You said growth stalls here: "${a2}." One of the fastest ways past that wall is making your existing buyers bring you new ones.`,
+      action: componentsList[2]
+        ? `Set up a ${componentsList[2].toLowerCase()} — a prompt that fires after a positive experience and gives her a reason to send a friend.`
+        : "After a customer has a win, send her a message that says: 'Know anyone else who needs this? Send them this link.' Make it easy. Give her a reason.",
+      outcome: "New customers arrive pre-sold because someone they trust already vouched for you. Your cost to acquire them is nearly zero.",
+    },
+    {
+      number: 4,
+      label: "Expand the channels",
+      diagnosis: "The engine works on one channel. Scaling means running the same proven path across a second and third channel — not reinventing everything.",
+      action: componentsList[3]
+        ? `Add ${componentsList[3].toLowerCase()} — use the same proof, the same warm-up, the same sales page, adapted to the new platform's format.`
+        : "Take the path that already works — the warm-up, the sales page, the follow-up — and adapt it for one more channel. Same story, different stage.",
+      outcome: "Growth compounds because every new channel feeds the same proven path. You're not starting from scratch — you're multiplying what already works.",
+    },
+  ];
 }
 
 const levelColors: Record<number, { bg: string; text: string; border: string; badge: string }> = {
@@ -280,10 +458,10 @@ export default function DiagnosticQuestionnaire() {
   });
   const [stage, setStage] = useState<"questions" | "contact" | "result">("questions");
   const [submitting, setSubmitting] = useState(false);
-  // Level 2 roadmap state
+  // Roadmap state (all levels)
   const [roadmapStage, setRoadmapStage] = useState<"idle" | "intake" | "display">("idle");
-  const [intakeDropoff, setIntakeDropoff] = useState("");
-  const [intakeWhyNotBuy, setIntakeWhyNotBuy] = useState("");
+  const [intakeQ1, setIntakeQ1] = useState("");
+  const [intakeQ2, setIntakeQ2] = useState("");
 
   const totalPages = pages.length;
   // Progress: questions = pages 0-4 out of 7 steps, contact = 5, result = 6
@@ -578,51 +756,50 @@ export default function DiagnosticQuestionnaire() {
       {/* ─── RESULT STAGE ─── */}
       {stage === "result" && (
         <div>
-          {/* ── Level 2: Intake form ── */}
-          {level === 2 && roadmapStage === "intake" && (
+          {/* ── Intake form (all levels) ── */}
+          {roadmapStage === "intake" && (
             <div>
               <p className="text-gold text-xs font-semibold tracking-[0.25em] uppercase mb-4">
                 Build your roadmap
               </p>
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                Two questions. Then your four-step plan.
+                {intakeConfig[level].heading}
               </h2>
               <p className="text-sm text-white/50 mb-8 leading-relaxed">
-                Tell us where people fall off and why you think they don&apos;t buy.
-                We&apos;ll turn your answers into a concrete roadmap.
+                {intakeConfig[level].subtitle}
               </p>
 
               <div className="space-y-6">
                 <div>
                   <label
-                    htmlFor="intake-dropoff"
+                    htmlFor="intake-q1"
                     className="block text-xs font-semibold text-white/60 uppercase tracking-wider mb-2"
                   >
-                    Where do interested people drop off in your process?
+                    {intakeConfig[level].q1Label}
                   </label>
                   <textarea
-                    id="intake-dropoff"
-                    value={intakeDropoff}
-                    onChange={(e) => setIntakeDropoff(e.target.value)}
+                    id="intake-q1"
+                    value={intakeQ1}
+                    onChange={(e) => setIntakeQ1(e.target.value)}
                     rows={3}
                     className="w-full px-4 py-3.5 rounded-xl bg-white/[0.05] border border-white/10 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-gold/50 focus:bg-white/[0.07] transition-all resize-none"
-                    placeholder="e.g. They DM me, I send pricing, then I never hear back..."
+                    placeholder={intakeConfig[level].q1Placeholder}
                   />
                 </div>
                 <div>
                   <label
-                    htmlFor="intake-whynot"
+                    htmlFor="intake-q2"
                     className="block text-xs font-semibold text-white/60 uppercase tracking-wider mb-2"
                   >
-                    Why do you think they don&apos;t end up buying?
+                    {intakeConfig[level].q2Label}
                   </label>
                   <textarea
-                    id="intake-whynot"
-                    value={intakeWhyNotBuy}
-                    onChange={(e) => setIntakeWhyNotBuy(e.target.value)}
+                    id="intake-q2"
+                    value={intakeQ2}
+                    onChange={(e) => setIntakeQ2(e.target.value)}
                     rows={3}
                     className="w-full px-4 py-3.5 rounded-xl bg-white/[0.05] border border-white/10 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-gold/50 focus:bg-white/[0.07] transition-all resize-none"
-                    placeholder="e.g. I think they don't see enough proof that it works..."
+                    placeholder={intakeConfig[level].q2Placeholder}
                   />
                 </div>
               </div>
@@ -639,21 +816,21 @@ export default function DiagnosticQuestionnaire() {
                     setRoadmapStage("display");
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  disabled={!intakeDropoff.trim() || !intakeWhyNotBuy.trim()}
+                  disabled={!intakeQ1.trim() || !intakeQ2.trim()}
                   className={`px-8 py-3.5 rounded-full text-sm font-semibold transition-all ${
-                    intakeDropoff.trim() && intakeWhyNotBuy.trim()
+                    intakeQ1.trim() && intakeQ2.trim()
                       ? "bg-gold text-charcoal hover:bg-gold-light hover:shadow-[0_0_20px_rgba(198,164,78,0.3)]"
                       : "bg-white/10 text-white/30 cursor-not-allowed"
                   }`}
                 >
-                  Generate my roadmap &rarr;
+                  {intakeConfig[level].buttonLabel} &rarr;
                 </button>
               </div>
             </div>
           )}
 
-          {/* ── Level 2: Generated roadmap ── */}
-          {level === 2 && roadmapStage === "display" && (
+          {/* ── Generated roadmap (all levels) ── */}
+          {roadmapStage === "display" && (
             <div>
               <div className="text-center mb-10">
                 <div
@@ -674,8 +851,9 @@ export default function DiagnosticQuestionnaire() {
 
               <div className="space-y-6">
                 {generateRoadmap(
-                  intakeDropoff,
-                  intakeWhyNotBuy,
+                  level,
+                  intakeQ1,
+                  intakeQ2,
                   components.split(", "),
                   answers.q9 ? getGoalLabel(answers.q9) : "",
                 ).map((step) => (
@@ -708,13 +886,13 @@ export default function DiagnosticQuestionnaire() {
               {/* Upgrade prompt */}
               <div className="mt-10 pt-8 border-t border-white/5 text-center">
                 <p className="text-sm text-white/40 mb-6 leading-relaxed">
-                  Want this built with you rather than by you?
+                  {intakeConfig[level].upgradePrompt}
                   <br />
                   That is what Ekholo does.
                 </p>
                 <a
                   href={`https://wa.me/${EKHOLO_WHATSAPP}?text=${encodeURIComponent(
-                    `Hi, I just completed the Ekholo diagnostic. I scored ${score}/40 and landed at ${levelLabel}. I'd like to talk about the done-with-you option.`
+                    intakeConfig[level].whatsappText(score, levelLabel)
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -743,8 +921,8 @@ export default function DiagnosticQuestionnaire() {
             </div>
           )}
 
-          {/* ── Standard result screen (all levels; Level 2 when roadmapStage is idle) ── */}
-          {!(level === 2 && (roadmapStage === "intake" || roadmapStage === "display")) && (
+          {/* ── Standard result screen (all levels when roadmapStage is idle) ── */}
+          {roadmapStage === "idle" && (
             <div>
               {/* Level badge */}
               <div className="text-center mb-8">
@@ -785,20 +963,20 @@ export default function DiagnosticQuestionnaire() {
                 </div>
               </div>
 
-              {/* Level 2 — Build my roadmap button */}
-              {level === 2 && (
-                <div className="mb-8">
-                  <button
-                    onClick={() => {
-                      setRoadmapStage("intake");
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
-                    className="w-full px-8 py-4 rounded-full text-sm font-semibold bg-gold text-charcoal hover:bg-gold-light hover:shadow-[0_0_20px_rgba(198,164,78,0.3)] transition-all"
-                  >
-                    Build my roadmap &rarr;
-                  </button>
-                </div>
-              )}
+              {/* Build my roadmap button (all levels) */}
+              <div className="mb-8">
+                <button
+                  onClick={() => {
+                    setIntakeQ1("");
+                    setIntakeQ2("");
+                    setRoadmapStage("intake");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="w-full px-8 py-4 rounded-full text-sm font-semibold bg-gold text-charcoal hover:bg-gold-light hover:shadow-[0_0_20px_rgba(198,164,78,0.3)] transition-all"
+                >
+                  {intakeConfig[level].buttonLabel} &rarr;
+                </button>
+              </div>
 
               {/* Goal + Bandwidth */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
