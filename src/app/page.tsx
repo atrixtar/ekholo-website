@@ -21,20 +21,23 @@ import { FAQAccordion } from "@/components/FAQ";
 /* ─── HERO ─── */
 function HeroSection() {
   return (
-    <section className="relative bg-charcoal text-white overflow-hidden min-h-[90vh] flex items-center noise">
-      {/* Layered atmospheric gradients */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_40%,rgba(198,164,78,0.12),transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_80%_20%,rgba(198,164,78,0.06),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_40%_at_50%_80%,rgba(198,164,78,0.08),transparent_50%)]" />
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
+    <section className="relative bg-charcoal text-white overflow-hidden min-h-[90vh] flex items-center">
+      {/* Background image — swap this URL for your own photo */}
+      <div className="absolute inset-0">
+        <img
+          src="/hero-bg.jpg"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+        {/* Dark overlay — keeps text readable over any image */}
+        <div className="absolute inset-0 bg-charcoal/75" />
+        {/* Gold tint from left */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_40%,rgba(198,164,78,0.15),transparent_60%)]" />
+        {/* Vignette edges */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_100%_at_50%_50%,transparent_30%,rgba(26,26,46,0.8)_100%)]" />
+      </div>
+      {/* Noise texture */}
+      <div className="absolute inset-0 noise" />
       {/* Floating gold particles */}
       <FloatingParticles count={14} />
       {/* Central gold glow */}
@@ -50,11 +53,11 @@ function HeroSection() {
             <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-bold leading-[1.08] tracking-tight">
               People click your ad.
               <br />
-              <span className="text-gold">Then they vanish.</span>
+              <span className="text-gradient-gold">Then they vanish.</span>
             </h1>
           </FadeUp>
           <FadeUp delay={0.2}>
-            <p className="mt-8 text-lg sm:text-xl text-white/60 leading-relaxed max-w-2xl">
+            <p className="mt-8 text-lg sm:text-xl text-white/70 leading-relaxed max-w-2xl">
               A stranger sees your ad. She clicks. She lands on a page that says
               nothing about why she should trust you. So she leaves. You paid for
               that click. We build the path that turns her into a buyer &mdash;
@@ -91,14 +94,14 @@ function HeroSection() {
             </div>
           </FadeUp>
           <FadeUp delay={0.4}>
-            <p className="mt-6 text-sm text-white/30">
+            <p className="mt-6 text-sm text-white/40">
               Our prices are on the wall, not behind a phone call. 10% of your
               ad spend + a flat build fee.
             </p>
           </FadeUp>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-charcoal to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-charcoal to-transparent z-10" />
     </section>
   );
 }
@@ -168,8 +171,18 @@ function StatsSection() {
 /* ─── PROBLEM ─── */
 function ProblemSection() {
   return (
-    <section className="py-20 lg:py-28 bg-background">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="relative py-20 lg:py-28 bg-background overflow-hidden">
+      {/* Atmospheric side image — visible on large screens */}
+      <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[45%]">
+        <img
+          src="/problem-bg.jpg"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <FadeLeft>
             <div>
@@ -283,8 +296,18 @@ function HowItWorksSection() {
   ];
 
   return (
-    <section id="how-it-works" className="relative py-20 lg:py-28 bg-charcoal text-white noise overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="how-it-works" className="relative py-20 lg:py-28 text-white overflow-hidden">
+      {/* Background image — swap this URL for your own photo */}
+      <div className="absolute inset-0">
+        <img
+          src="/howitworks-bg.jpg"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-charcoal/85" />
+      </div>
+      <div className="absolute inset-0 noise" />
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <FadeUp>
           <div className="max-w-3xl mb-16">
             <p className="text-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
@@ -614,8 +637,19 @@ function FAQSection() {
 /* ─── FINAL CTA ─── */
 function CTASection() {
   return (
-    <section className="relative py-24 lg:py-32 bg-charcoal text-white overflow-hidden noise">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(198,164,78,0.1),transparent_60%)]" />
+    <section className="relative py-24 lg:py-32 text-white overflow-hidden">
+      {/* Background image — swap this URL for your own photo */}
+      <div className="absolute inset-0">
+        <img
+          src="/cta-bg.jpg"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-charcoal/80" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(198,164,78,0.12),transparent_60%)]" />
+      </div>
+      {/* Noise texture */}
+      <div className="absolute inset-0 noise" />
       <FloatingParticles count={8} />
       <GoldGlow size={500} className="-translate-y-[20%]" />
       <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center">
