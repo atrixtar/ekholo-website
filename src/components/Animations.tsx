@@ -13,14 +13,11 @@ export function FadeUp({
   delay?: number;
   className?: string;
 }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={className}
     >
@@ -39,14 +36,11 @@ export function FadeLeft({
   delay?: number;
   className?: string;
 }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, x: -60 }}
-      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={className}
     >
@@ -65,14 +59,11 @@ export function FadeRight({
   delay?: number;
   className?: string;
 }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, x: 60 }}
-      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 60 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={className}
     >
@@ -91,14 +82,11 @@ export function ScaleUp({
   delay?: number;
   className?: string;
 }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, scale: 0.9 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.6, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={className}
     >
@@ -117,14 +105,11 @@ export function StaggerContainer({
   className?: string;
   staggerDelay?: number;
 }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
     <motion.div
-      ref={ref}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
       variants={{
         hidden: {},
         visible: {
@@ -179,7 +164,7 @@ export function AnimatedCounter({
   className?: string;
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const count = useMotionValue(0);
   const rounded = useTransform(count, (v) => Math.round(v));
 
@@ -394,11 +379,16 @@ export function TextReveal({
   className?: string;
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true });
   const words = text.split(" ");
 
   return (
-    <span ref={ref} className={className}>
+    <motion.span
+      ref={ref}
+      className={className}
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
+    >
       {words.map((word, i) => (
         <motion.span
           key={i}
@@ -414,6 +404,6 @@ export function TextReveal({
           {word}
         </motion.span>
       ))}
-    </span>
+    </motion.span>
   );
 }
