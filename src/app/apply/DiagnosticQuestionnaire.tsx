@@ -196,7 +196,7 @@ const levelDescriptions: Record<number, string> = {
   4: "The engine works. Now it needs systems so it runs without you in every conversation. Post-purchase follow-up, a repeat-buyer path, and referral triggers are where your next revenue jump lives.",
 };
 
-const EKHOLO_WHATSAPP = "25488120047";
+const EKHOLO_WHATSAPP = "254788120047";
 
 /* ─── INTAKE CONFIG PER LEVEL ─── */
 interface IntakeConfig {

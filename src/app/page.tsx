@@ -6,15 +6,11 @@ import {
   ScaleUp,
   StaggerContainer,
   StaggerItem,
-  AnimatedCounter,
   LogoCarousel,
   GlowLine,
   TextReveal,
   FloatingParticles,
   GoldGlow,
-  GlassCard,
-  TiltCard,
-  ParallaxLayer,
 } from "@/components/Animations";
 import { FAQAccordion } from "@/components/FAQ";
 
@@ -134,35 +130,6 @@ function TrustBar() {
             </span>
           ))}
         </LogoCarousel>
-      </div>
-    </section>
-  );
-}
-
-/* ─── STATS ─── */
-function StatsSection() {
-  return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.15}>
-          {[
-            { value: 62, suffix: "%", label: "of business owners have thought about firing their agency over hidden reports" },
-            { value: 76, suffix: "%", label: "of ad budgets burn through pages that were never built to sell" },
-            { value: 3, suffix: "–4x", label: "more buyers from the same spend when you fix what sits between the click and the sale" },
-            { value: 90, suffix: "+", label: "days to build, test, and prove a machine that runs without you watching it" },
-          ].map((stat) => (
-            <StaggerItem key={stat.label}>
-              <TiltCard>
-                <div className="text-center p-6 rounded-2xl bg-background border border-charcoal/5 card-lift border-glow">
-                  <p className="text-4xl sm:text-5xl font-bold text-gradient-gold">
-                    <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-                  </p>
-                  <p className="mt-3 text-sm text-slate leading-relaxed">{stat.label}</p>
-                </div>
-              </TiltCard>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
       </div>
     </section>
   );
@@ -393,11 +360,6 @@ function AntiBlackBoxSection() {
                 the money that went out.
               </p>
               <GlowLine className="my-8" />
-              <p className="text-sm text-slate italic">
-                &ldquo;They sent me beautiful reports. Forty pages. Not a single
-                line explained why my bank account looked the same.&rdquo;
-                &mdash; That era is over.
-              </p>
             </div>
           </FadeLeft>
           <FadeRight>
@@ -455,60 +417,6 @@ function AntiBlackBoxSection() {
             </StaggerContainer>
           </FadeRight>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── SOCIAL PROOF ─── */
-function SocialProofSection() {
-  const quotes = [
-    {
-      quote:
-        "My ads aren't failing because the pictures are wrong. They're failing because the person who clicks has no reason to believe me yet. She lands cold and leaves cold.",
-      attribution: "Online store owner, $45K/month in ads",
-    },
-    {
-      quote:
-        "They couldn't explain what they were doing without hiding behind words I didn't understand. I left every meeting more confused than when I walked in. That's not complexity — that's a curtain.",
-      attribution: "Former agency client",
-    },
-    {
-      quote:
-        "Two months of work. Not a single new customer. When I asked what went wrong, they pointed the finger at me. I was the one writing the cheques.",
-      attribution: "Business owner, $28K spent",
-    },
-  ];
-
-  return (
-    <section className="py-20 lg:py-28 bg-cream">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <FadeUp>
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
-              Does this sound like your story?
-            </h2>
-            <p className="mt-4 text-lg text-slate">
-              Real words from real owners who watched their ad budgets disappear
-              into someone else&apos;s pockets.
-            </p>
-          </div>
-        </FadeUp>
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.15}>
-          {quotes.map((item, i) => (
-            <StaggerItem key={i}>
-              <blockquote className="h-full p-8 rounded-2xl bg-white border border-charcoal/5 card-lift border-glow flex flex-col">
-                <div className="text-gold text-4xl leading-none mb-4" style={{ textShadow: "0 0 30px rgba(198,164,78,0.3)" }}>&ldquo;</div>
-                <p className="text-base text-charcoal leading-relaxed flex-1">
-                  {item.quote}
-                </p>
-                <footer className="mt-6 text-sm text-slate">
-                  &mdash; {item.attribution}
-                </footer>
-              </blockquote>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
       </div>
     </section>
   );
@@ -592,7 +500,7 @@ function FAQSection() {
   const faqs = [
     {
       q: "Every agency says they're different. Why should I believe you?",
-      a: "Don't believe us. Look at the evidence instead. Our prices are published on this site — you saw them before we spoke. Our case studies show what was spent, what we charged, and what came back in revenue. Every other agency in this space hides both. That's not a claim of difference. It's a structural fact you can verify in two clicks.",
+      a: "Don't believe us. Look at the evidence instead. Our prices are published on this site — you saw them before we spoke. Our live audits show exactly how we think, on camera, with real businesses. Every other agency in this space hides both. That's not a claim of difference. It's a structural fact you can verify in two clicks.",
     },
     {
       q: "Why do I have to commit for three months?",
@@ -703,11 +611,9 @@ export default function Home() {
     <>
       <HeroSection />
       <TrustBar />
-      <StatsSection />
       <ProblemSection />
       <HowItWorksSection />
       <AntiBlackBoxSection />
-      <SocialProofSection />
       <WhoThisIsForSection />
       <FAQSection />
       <CTASection />
