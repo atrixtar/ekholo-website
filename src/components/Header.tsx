@@ -30,7 +30,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-3">
             <span
               className={`text-2xl font-bold tracking-[0.2em] transition-colors duration-300 ${
-                scrolled ? "text-charcoal" : "text-white"
+                scrolled ? "text-charcoal" : "text-gold"
               }`}
             >
               EKHOLO

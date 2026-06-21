@@ -143,3 +143,57 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* ─── HERO ANIMATION ─── */
+.scatter-dot-1, .scatter-dot-2, .scatter-dot-3 {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+}
+.scatter-dot-1 { animation: scatterA 2.5s linear infinite; }
+.scatter-dot-2 { animation: scatterB 2.5s linear infinite 0.5s; }
+.scatter-dot-3 { animation: scatterC 2.5s linear infinite 1s; }
+
+@keyframes scatterA {
+  0% { top: 0; left: 50px; opacity: 0.5; }
+  100% { top: 40px; left: 15px; opacity: 0; }
+}
+@keyframes scatterB {
+  0% { top: 0; left: 48px; opacity: 0.4; }
+  100% { top: 36px; left: 80px; opacity: 0; }
+}
+@keyframes scatterC {
+  0% { top: 0; left: 52px; opacity: 0.3; }
+  100% { top: 38px; left: 35px; opacity: 0; }
+}
+
+.flow-dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  box-shadow: 0 0 6px rgba(198,164,78,0.3);
+}
+.flow-dot-1 { animation: flowDot 2s linear infinite; }
+.flow-dot-2 { animation: flowDot 2s linear infinite 0.4s; }
+.flow-dot-3 { animation: flowDot 2s linear infinite 0.8s; }
+.flow-dot-4 { animation: flowDot 2s linear infinite 1.2s; }
+.flow-dot-5 { animation: flowDot 2s linear infinite 1.6s; }
+
+@keyframes flowDot {
+  0% { top: 0; left: 48px; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 38px; left: 48px; opacity: 0; }
+}
+
+.arrow-pulse {
+  animation: heroArrow 2s ease-in-out infinite;
+}
+@keyframes heroArrow {
+  0%, 100% { opacity: 0.3; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(3px); }
+}

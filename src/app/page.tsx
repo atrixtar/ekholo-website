@@ -12,6 +12,7 @@ import {
   FloatingParticles,
   GoldGlow,
 } from "@/components/Animations";
+import { HeroAnimation } from "@/components/HeroAnimation";
 import { FAQAccordion } from "@/components/FAQ";
 
 /* ─── HERO ─── */
@@ -39,61 +40,66 @@ function HeroSection() {
       {/* Central gold glow */}
       <GoldGlow size={600} className="-translate-y-[10%]" />
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-36 w-full">
-        <div className="max-w-3xl">
-          <FadeUp>
-            <p className="text-gold text-sm font-semibold tracking-[0.25em] uppercase mb-6">
-              The Content Climb System&trade;
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-bold leading-[1.08] tracking-tight">
-              People click your ad.
-              <br />
-              <span className="text-gradient-gold">Then they vanish.</span>
-            </h1>
-          </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="mt-8 text-lg sm:text-xl text-white/70 leading-relaxed max-w-2xl">
-              A stranger sees your ad. She clicks. She lands on a page that says
-              nothing about why she should trust you. So she leaves. You paid for
-              that click. We build the path that turns her into a buyer &mdash;
-              from the first glance to the final sale.
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.3}>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/apply"
-                className="btn-glow group inline-flex items-center justify-center px-8 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light transition-all text-base hover:shadow-[0_0_30px_rgba(198,164,78,0.3)] hover:scale-[1.03]"
-              >
-                Show Me Where It Breaks
-                <svg
-                  className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="max-w-xl">
+            <FadeUp>
+              <p className="text-gold text-sm font-semibold tracking-[0.25em] uppercase mb-6">
+                The Content Climb System&trade;
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold leading-[1.08] tracking-tight">
+                People click your ad.
+                <br />
+                <span className="text-gradient-gold">Then they vanish.</span>
+              </h1>
+            </FadeUp>
+            <FadeUp delay={0.2}>
+              <p className="mt-8 text-lg text-white/70 leading-relaxed">
+                A stranger sees your ad. She clicks. She lands on a page that says
+                nothing about why she should trust you. So she leaves. You paid for
+                that click. We build the path that turns her into a buyer &mdash;
+                from the first glance to the final sale.
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.3}>
+              <div className="mt-10 flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/apply"
+                  className="btn-glow group inline-flex items-center justify-center px-8 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light transition-all text-base hover:shadow-[0_0_30px_rgba(198,164,78,0.3)] hover:scale-[1.03]"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
-              <Link
-                href="/pricing"
-                className="inline-flex items-center justify-center px-8 py-4 border border-white/15 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/25 transition-all text-base glass"
-              >
-                See What It Costs
-              </Link>
-            </div>
-          </FadeUp>
-          <FadeUp delay={0.4}>
-            <p className="mt-6 text-sm text-white/40">
-              Our prices are on the wall, not behind a phone call. 10% of your
-              ad spend + a flat build fee.
-            </p>
+                  Show Me Where It Breaks
+                  <svg
+                    className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </Link>
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center justify-center px-8 py-4 border border-white/15 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/25 transition-all text-base glass"
+                >
+                  See What It Costs
+                </Link>
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.4}>
+              <p className="mt-6 text-sm text-white/40">
+                Our prices are on the wall, not behind a phone call. 10% of your
+                ad spend + a flat build fee.
+              </p>
+            </FadeUp>
+          </div>
+          <FadeUp delay={0.3} className="hidden lg:flex justify-center">
+            <HeroAnimation />
           </FadeUp>
         </div>
       </div>
