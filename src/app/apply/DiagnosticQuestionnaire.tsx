@@ -815,6 +815,21 @@ export default function DiagnosticQuestionnaire() {
                 </button>
                 <button
                   onClick={() => {
+                    if (level === 2) {
+                      const goalLabel = answers.q9 ? getGoalLabel(answers.q9) : "";
+                      const bandwidthLabel = answers.q10 ? getBandwidthLabel(answers.q10) : "";
+                      const params = new URLSearchParams({
+                        dropoff: intakeQ1,
+                        barrier: intakeQ2,
+                        goal: goalLabel,
+                        bandwidth: bandwidthLabel,
+                        components,
+                        business: contact.business,
+                        name: contact.name,
+                      });
+                      window.location.href = `/roadmap?${params.toString()}`;
+                      return;
+                    }
                     setRoadmapStage("display");
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
