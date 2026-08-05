@@ -3,10 +3,12 @@ import Link from "next/link";
 import { FadeUp, FadeLeft, FadeRight, ScaleUp } from "@/components/Animations";
 import { fetchYouTubeVideos } from "@/lib/youtube";
 
+const EKHOLO_WHATSAPP = "254788120047";
+
 export const metadata: Metadata = {
-  title: "Live Audits",
+  title: "Results",
   description:
-    "We open real businesses on camera, find the break between the ad and the sale, and show you the fix. No scripted wins. No fictional numbers. Just the diagnostic in action.",
+    "From scattered spend to 11x return. Real numbers from a real engagement — what was spent, what changed, and what came back.",
 };
 
 function formatDate(iso: string): string {
@@ -24,43 +26,21 @@ export default async function CaseStudiesPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative bg-charcoal text-white py-20 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(198,164,78,0.08),transparent_60%)]" />
+      {/* ─── CASE STUDY HERO ─── */}
+      <section className="relative bg-charcoal text-white py-20 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_30%,rgba(198,164,78,0.12),transparent_60%)]" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <FadeUp>
-            <div className="max-w-3xl">
-              <p className="text-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-                Live Audits &amp; Case Studies
-              </p>
-              <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-                Real numbers. Real businesses.
-                <br />
-                No fiction.
-              </h1>
-              <p className="mt-6 text-lg text-white/60 leading-relaxed">
-                We pull up a real business, walk through every step from the ad
-                to the checkout, and show you exactly where the buyer drops off
-                and why. Below, the numbers from a real engagement &mdash; not a
-                mock-up, not a projection. What was spent, what changed, and
-                what came back.
-              </p>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* ─── FEATURED CASE STUDY ─── */}
-      <section className="py-20 lg:py-28 bg-background">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <FadeUp>
-            <p className="text-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
+            <p className="text-gold text-sm font-semibold tracking-[0.25em] uppercase mb-6">
               Case Study &bull; August 2026
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-charcoal tracking-tight mb-4">
-              From scattered spend to 11x return.
-            </h2>
-            <p className="text-lg text-slate leading-relaxed max-w-3xl mb-16">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
+              From KES 33,000 to KES 149,484
+              <br />
+              in revenue.{" "}
+              <span className="text-gradient-gold">Same budget.</span>
+            </h1>
+            <p className="mt-8 text-lg sm:text-xl text-white/50 leading-relaxed max-w-2xl">
               A bleeding ad account turned into a revenue machine in 10 days,
               spending less money. Same product. Same landing page. Same
               audience pool. The only thing that changed was what the ad said
@@ -68,10 +48,42 @@ export default async function CaseStudiesPage() {
             </p>
           </FadeUp>
 
-          {/* Before / After metrics */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {/* Hero stat pills */}
+          <FadeUp delay={0.2}>
+            <div className="mt-12 flex flex-wrap gap-4">
+              <div className="px-6 py-3 rounded-full bg-gold/10 border border-gold/20">
+                <span className="text-sm text-white/50">Ad spend</span>{" "}
+                <span className="text-base font-bold text-gold">
+                  &darr; 37%
+                </span>
+              </div>
+              <div className="px-6 py-3 rounded-full bg-gold/10 border border-gold/20">
+                <span className="text-sm text-white/50">Purchases</span>{" "}
+                <span className="text-base font-bold text-gold">
+                  &uarr; 292%
+                </span>
+              </div>
+              <div className="px-6 py-3 rounded-full bg-gold/10 border border-gold/20">
+                <span className="text-sm text-white/50">Cost per sale</span>{" "}
+                <span className="text-base font-bold text-gold">
+                  &darr; 84%
+                </span>
+              </div>
+              <div className="px-6 py-3 rounded-full bg-white/5 border border-gold/30">
+                <span className="text-sm text-white/50">Return</span>{" "}
+                <span className="text-lg font-extrabold text-gold">11.3x</span>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ─── BEFORE / AFTER ─── */}
+      <section className="py-20 lg:py-28 bg-background">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
             <FadeLeft>
-              <div className="rounded-2xl border border-charcoal/10 bg-white p-8">
+              <div className="rounded-2xl border border-charcoal/10 bg-white p-8 h-full">
                 <p className="text-xs font-semibold text-slate uppercase tracking-[0.2em] mb-6">
                   Before &mdash; The June Campaign
                 </p>
@@ -104,7 +116,7 @@ export default async function CaseStudiesPage() {
               </div>
             </FadeLeft>
             <FadeRight>
-              <div className="rounded-2xl border border-gold/30 bg-gold/[0.04] p-8">
+              <div className="rounded-2xl border border-gold/30 bg-gold/[0.04] p-8 h-full">
                 <p className="text-xs font-semibold text-gold uppercase tracking-[0.2em] mb-6">
                   After &mdash; What We Built
                 </p>
@@ -114,7 +126,10 @@ export default async function CaseStudiesPage() {
                       KES 13,226
                     </p>
                     <p className="text-sm text-gold-dark mt-1">
-                      Ad spend <span className="text-emerald-600 font-semibold">&darr; 37%</span>
+                      Ad spend{" "}
+                      <span className="text-emerald-600 font-semibold">
+                        &darr; 37%
+                      </span>
                     </p>
                   </div>
                   <div>
@@ -122,7 +137,10 @@ export default async function CaseStudiesPage() {
                       51
                     </p>
                     <p className="text-sm text-gold-dark mt-1">
-                      Purchases <span className="text-emerald-600 font-semibold">&uarr; 292%</span>
+                      Purchases{" "}
+                      <span className="text-emerald-600 font-semibold">
+                        &uarr; 292%
+                      </span>
                     </p>
                   </div>
                   <div>
@@ -130,7 +148,10 @@ export default async function CaseStudiesPage() {
                       KES 259
                     </p>
                     <p className="text-sm text-gold-dark mt-1">
-                      Cost per sale <span className="text-emerald-600 font-semibold">&darr; 84%</span>
+                      Cost per sale{" "}
+                      <span className="text-emerald-600 font-semibold">
+                        &darr; 84%
+                      </span>
                     </p>
                   </div>
                   <div>
@@ -138,7 +159,10 @@ export default async function CaseStudiesPage() {
                       11.3x
                     </p>
                     <p className="text-sm text-gold-dark mt-1">
-                      Return on ad spend <span className="text-emerald-600 font-semibold">&uarr; 615%</span>
+                      Return{" "}
+                      <span className="text-emerald-600 font-semibold">
+                        &uarr; 615%
+                      </span>
                     </p>
                   </div>
                 </div>
@@ -148,7 +172,7 @@ export default async function CaseStudiesPage() {
 
           {/* Revenue callout */}
           <FadeUp>
-            <div className="rounded-2xl bg-charcoal text-white p-8 sm:p-10 text-center mb-16">
+            <div className="rounded-2xl bg-charcoal text-white p-8 sm:p-10 text-center mb-20">
               <p className="text-xs font-semibold text-gold uppercase tracking-[0.2em] mb-3">
                 Revenue
               </p>
@@ -176,11 +200,15 @@ export default async function CaseStudiesPage() {
 
           {/* What we changed */}
           <FadeUp>
-            <h3 className="text-2xl font-bold text-charcoal mb-8">
-              What we changed.
-            </h3>
+            <h2 className="text-2xl sm:text-3xl font-bold text-charcoal mb-3">
+              What actually changed.
+            </h2>
+            <p className="text-base text-slate mb-10 max-w-2xl">
+              Four moves. Ten days. The problem was never the audience &mdash;
+              it was what the ad said to them.
+            </p>
           </FadeUp>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
               {
                 num: "01",
@@ -206,9 +234,9 @@ export default async function CaseStudiesPage() {
               <FadeUp key={step.num}>
                 <div className="p-6 rounded-xl bg-white border border-charcoal/5 hover:border-gold/20 transition-colors h-full">
                   <span className="text-xs font-bold text-gold">{step.num}</span>
-                  <h4 className="text-base font-bold text-charcoal mt-2 mb-3">
+                  <h3 className="text-base font-bold text-charcoal mt-2 mb-3">
                     {step.title}
-                  </h4>
+                  </h3>
                   <p className="text-sm text-slate leading-relaxed">
                     {step.desc}
                   </p>
@@ -216,69 +244,90 @@ export default async function CaseStudiesPage() {
               </FadeUp>
             ))}
           </div>
-
-          {/* What's still on the table */}
-          <FadeUp>
-            <div className="rounded-2xl bg-cream border border-gold/10 p-8 sm:p-10">
-              <h3 className="text-xl font-bold text-charcoal mb-2">
-                What&apos;s still on the table.
-              </h3>
-              <p className="text-sm text-slate mb-6">
-                We used three of six steps. The next three are where it gets
-                interesting.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {[
-                  {
-                    title: "Fix the checkout",
-                    desc: "Most people who started paying didn't finish. Two fields asking for the same number, no card option visible. Fix this and sales go up without touching a single ad.",
-                  },
-                  {
-                    title: "Long-form ad copy",
-                    desc: "Written ads — 1,200+ words — that do the selling before anyone reaches the landing page. The reader arrives already convinced.",
-                  },
-                  {
-                    title: "Advertorial landing pages",
-                    desc: "A page that reads like an article but works like a sales letter. Sits between the ad and the checkout. Warms the buyer one more step before they hit the payment page.",
-                  },
-                ].map((item) => (
-                  <div key={item.title}>
-                    <h4 className="text-sm font-bold text-charcoal mb-2">
-                      {item.title}
-                    </h4>
-                    <p className="text-sm text-slate leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </FadeUp>
         </div>
       </section>
 
-      {/* ─── LIVE AUDITS (YOUTUBE) ─── */}
+      {/* ─── PAID AUDITS ─── */}
       <section className="py-20 lg:py-28 bg-charcoal text-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <FadeUp>
+              <p className="text-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
+                Revenue Leak Audit
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6">
+                We open your business on camera and find the break.
+              </h2>
+              <p className="text-base text-white/60 leading-relaxed mb-6">
+                A live, on-camera walkthrough of your entire path from ad to
+                sale. We pull up your pages, your ads, your checkout, your
+                follow-up &mdash; and show you exactly where buyers drop off
+                and why. You keep the recording and the diagnosis whether you
+                hire us or not.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {[
+                  "Full walkthrough of your ad-to-sale path",
+                  "Recorded on camera — yours to keep",
+                  "Specific diagnosis: where the leak is and what to fix first",
+                  "No upsell during the audit — just the truth",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-3 text-sm text-white/70"
+                  >
+                    <span className="shrink-0 mt-0.5 text-gold">&#10003;</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <div className="rounded-2xl border border-gold/20 bg-white/[0.03] p-8 sm:p-10 text-center">
+                <p className="text-xs font-semibold text-white/30 uppercase tracking-[0.2em] mb-2">
+                  Revenue Leak Audit
+                </p>
+                <p className="text-5xl sm:text-6xl font-extrabold text-gold mb-1">
+                  KSH 10,000
+                </p>
+                <p className="text-sm text-white/40 mb-8">
+                  per audit &bull; 3 spots per week
+                </p>
+                <a
+                  href={`https://wa.me/${EKHOLO_WHATSAPP}?text=${encodeURIComponent(
+                    "Hi, I'd like to book a Revenue Leak Audit."
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-full px-8 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light hover:shadow-[0_0_30px_rgba(198,164,78,0.3)] transition-all text-base"
+                >
+                  Book Your Audit &rarr;
+                </a>
+                <p className="mt-4 text-xs text-white/25">
+                  Limited to 3 audits per week so each one gets full attention.
+                </p>
+              </div>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── PAST AUDITS (YOUTUBE) ─── */}
+      <section className="py-20 lg:py-28 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <FadeUp>
             <p className="text-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              Live Audits
+              Past Audits
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-charcoal tracking-tight mb-4">
               Watch us find the break.
             </h2>
-            <p className="text-lg text-white/60 leading-relaxed max-w-3xl mb-12">
-              We open real businesses on camera, walk through every step from
-              the ad to the checkout, and show you exactly where the buyer drops
-              off. No scripted wins. No fictional numbers.
+            <p className="text-lg text-slate leading-relaxed max-w-3xl mb-12">
+              Real businesses. On camera. No scripted wins, no fictional
+              numbers &mdash; just the diagnostic in action.
             </p>
           </FadeUp>
-        </div>
-      </section>
 
-      {/* Videos */}
-      <section className="py-20 lg:py-28 bg-background">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {videos.length === 0 ? (
             <p className="text-center text-slate">
               Audits are on the way. Check back soon.
@@ -288,7 +337,6 @@ export default async function CaseStudiesPage() {
               {videos.map((video) => (
                 <FadeUp key={video.videoId}>
                   <div className="group rounded-2xl bg-white border border-charcoal/5 hover:border-gold/30 overflow-hidden transition-all hover:shadow-xl flex flex-col h-full">
-                    {/* Thumbnail with play overlay */}
                     <a
                       href={video.url}
                       target="_blank"
@@ -300,7 +348,6 @@ export default async function CaseStudiesPage() {
                         alt={video.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      {/* Play button overlay */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-16 h-16 rounded-full bg-gold/90 flex items-center justify-center shadow-lg group-hover:bg-gold group-hover:scale-110 transition-all">
                           <svg
@@ -313,15 +360,13 @@ export default async function CaseStudiesPage() {
                         </div>
                       </div>
                     </a>
-
-                    {/* Info */}
                     <div className="p-6 flex flex-col flex-1">
                       <p className="text-xs text-slate mb-3">
                         {formatDate(video.published)}
                       </p>
-                      <h2 className="text-base font-bold text-charcoal group-hover:text-gold transition-colors leading-snug">
+                      <h3 className="text-base font-bold text-charcoal group-hover:text-gold transition-colors leading-snug">
                         {video.title}
-                      </h2>
+                      </h3>
                       <div className="mt-auto pt-4">
                         <a
                           href={video.url}
@@ -341,41 +386,36 @@ export default async function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* Bottom note */}
-      <section className="py-12 bg-cream">
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-          <FadeUp>
-            <p className="text-sm text-slate">
-              Every audit asks the same question: where does a stranger stop
-              trusting you between the ad and the checkout? We look at the order
-              of the pages, the proof on each one, the qualifying step, and when
-              you ask for the money. The same thinking runs inside every client
-              engagement.
-            </p>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* CTA */}
+      {/* ─── CTA ─── */}
       <section className="relative py-20 lg:py-28 bg-charcoal text-white overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(198,164,78,0.08),transparent_60%)]" />
         <div className="relative max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <ScaleUp>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-              Want us to audit yours?
-              <br />
-              Start with the diagnostic.
+              Want us to find yours?
             </h2>
             <p className="mt-6 text-lg text-white/60">
-              Ten questions. Three minutes. You walk away knowing exactly where
-              the break sits and which piece to fix first.
+              Book a Revenue Leak Audit or start with the free diagnostic. Either
+              way, you walk away knowing exactly where the break sits.
             </p>
-            <Link
-              href="/apply"
-              className="mt-8 inline-flex items-center justify-center px-10 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light transition-all text-lg hover:shadow-[0_0_30px_rgba(198,164,78,0.3)]"
-            >
-              Show Me Where It Breaks
-            </Link>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={`https://wa.me/${EKHOLO_WHATSAPP}?text=${encodeURIComponent(
+                  "Hi, I'd like to book a Revenue Leak Audit."
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-10 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light transition-all text-base hover:shadow-[0_0_30px_rgba(198,164,78,0.3)]"
+              >
+                Book an Audit &mdash; KSH 10,000
+              </a>
+              <Link
+                href="/apply"
+                className="inline-flex items-center justify-center px-10 py-4 border border-white/15 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/25 transition-all text-base"
+              >
+                Free Diagnostic &rarr;
+              </Link>
+            </div>
           </ScaleUp>
         </div>
       </section>
