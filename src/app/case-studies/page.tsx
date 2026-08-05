@@ -31,9 +31,6 @@ export default async function CaseStudiesPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_30%,rgba(198,164,78,0.12),transparent_60%)]" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <FadeUp>
-            <p className="text-gold text-sm font-semibold tracking-[0.25em] uppercase mb-6">
-              Case Study &bull; August 2026
-            </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
               From KES 33,000 to KES 149,484
               <br />
@@ -170,71 +167,37 @@ export default async function CaseStudiesPage() {
             </FadeRight>
           </div>
 
-          {/* Revenue callout */}
-          <FadeUp>
-            <div className="rounded-2xl bg-charcoal text-white p-8 sm:p-10 text-center mb-20">
-              <p className="text-xs font-semibold text-gold uppercase tracking-[0.2em] mb-3">
-                Revenue
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10">
-                <div>
-                  <p className="text-sm text-white/40">Before</p>
-                  <p className="text-2xl font-bold">KES 33,000</p>
-                </div>
-                <span className="text-gold text-2xl">&rarr;</span>
-                <div>
-                  <p className="text-sm text-gold/60">After</p>
-                  <p className="text-3xl sm:text-4xl font-extrabold text-gold">
-                    KES 149,484
-                  </p>
-                </div>
-                <span className="text-emerald-400 text-sm font-bold bg-emerald-400/10 px-3 py-1 rounded-full">
-                  +353%
-                </span>
-              </div>
-              <p className="mt-6 text-sm text-white/40">
-                For every KES 1 spent on ads, KES 11.30 came back.
-              </p>
-            </div>
-          </FadeUp>
-
-          {/* What we changed */}
+          {/* What we did */}
           <FadeUp>
             <h2 className="text-2xl sm:text-3xl font-bold text-charcoal mb-3">
-              What actually changed.
+              What we actually did.
             </h2>
             <p className="text-base text-slate mb-10 max-w-2xl">
-              Four moves. Ten days. The problem was never the audience &mdash;
-              it was what the ad said to them.
+              Same ads budget. Same product. Four changes in 10 days.
             </p>
           </FadeUp>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
               {
-                num: "01",
-                title: "Tested the desire, not the audience",
-                desc: "Two competing messages — fear of job loss vs. dream of wealth — ran head-to-head. The budget told us which one hit harder.",
+                title: "Ran two ads against each other",
+                desc: "One ad talked about making more money. The other talked about not losing your job. We split the budget 50/50 and let the numbers pick the winner.",
               },
               {
-                num: "02",
-                title: "Found the winning nerve",
-                desc: "Self-preservation won. People could picture losing their job. They couldn't picture seven figures. The ad that showed them the HR office beat the one that showed them a bank account.",
+                title: "Doubled down on what worked",
+                desc: "The \"don't lose your job\" angle sold 4x more. So we killed the other ad and moved every shilling to the one that was already making money.",
               },
               {
-                num: "03",
-                title: "Built fresh variations before fatigue set in",
-                desc: "When the winner's cost started climbing, new scripts — same core fear, different emotional entry point — replaced it before the audience went numb.",
+                title: "Swapped the ad before it got stale",
+                desc: "When costs started creeping up, we didn't wait. We wrote new versions of the same winning idea before people started ignoring it.",
               },
               {
-                num: "04",
-                title: "Chased the people who almost bought",
-                desc: "A separate retargeting campaign reached the 98 people who started checkout and left. Three of them came back and paid.",
+                title: "Went back for the almost-buyers",
+                desc: "98 people added to cart and left. We showed them a second ad. Three came back and paid.",
               },
             ].map((step) => (
-              <FadeUp key={step.num}>
+              <FadeUp key={step.title}>
                 <div className="p-6 rounded-xl bg-white border border-charcoal/5 hover:border-gold/20 transition-colors h-full">
-                  <span className="text-xs font-bold text-gold">{step.num}</span>
-                  <h3 className="text-base font-bold text-charcoal mt-2 mb-3">
+                  <h3 className="text-base font-bold text-charcoal mb-3">
                     {step.title}
                   </h3>
                   <p className="text-sm text-slate leading-relaxed">
@@ -270,7 +233,6 @@ export default async function CaseStudiesPage() {
                   "Full walkthrough of your ad-to-sale path",
                   "Recorded on camera — yours to keep",
                   "Specific diagnosis: where the leak is and what to fix first",
-                  "No upsell during the audit — just the truth",
                 ].map((item) => (
                   <li
                     key={item}
@@ -395,8 +357,8 @@ export default async function CaseStudiesPage() {
               Want us to find yours?
             </h2>
             <p className="mt-6 text-lg text-white/60">
-              Book a Revenue Leak Audit or start with the free diagnostic. Either
-              way, you walk away knowing exactly where the break sits.
+              Book a Revenue Leak Audit. You walk away knowing exactly
+              where the break sits.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -413,7 +375,7 @@ export default async function CaseStudiesPage() {
                 href="/apply"
                 className="inline-flex items-center justify-center px-10 py-4 border border-white/15 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/25 transition-all text-base"
               >
-                Free Diagnostic &rarr;
+                Take the Diagnostic &rarr;
               </Link>
             </div>
           </ScaleUp>
