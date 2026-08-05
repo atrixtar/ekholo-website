@@ -219,18 +219,18 @@ export default async function CaseStudiesPage() {
                 Revenue Leak Audit
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6">
-                We open your business on camera and find the break.
+                We open your store on camera and find the break.
               </h2>
               <p className="text-base text-white/60 leading-relaxed mb-6">
-                A live, on-camera walkthrough of your entire path from ad to
-                sale. We pull up your pages, your ads, your checkout, your
-                follow-up &mdash; and show you exactly where buyers drop off
-                and why. You keep the recording and the diagnosis whether you
-                hire us or not.
+                Built for e-commerce businesses selling on Shopify, WooCommerce,
+                or any online store. We pull up your product pages, your ads,
+                your checkout flow, your abandoned cart sequence &mdash; and
+                show you exactly where buyers drop off and why. You keep the
+                recording and the diagnosis whether you hire us or not.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
-                  "Full walkthrough of your ad-to-sale path",
+                  "Full walkthrough of your ad-to-checkout path",
                   "Recorded on camera — yours to keep",
                   "Specific diagnosis: where the leak is and what to fix first",
                 ].map((item) => (
