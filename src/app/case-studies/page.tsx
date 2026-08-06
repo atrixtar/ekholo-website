@@ -221,13 +221,13 @@ export default async function CaseStudiesPage() {
                 people buy from you on a screen. We go through everything a
                 customer sees from the moment they click your ad to the moment
                 they&apos;re supposed to pay &mdash; and show you where they
-                leave and why. You keep the recording whether you hire us or not.
+                leave and why.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
                   "We walk through everything your customer sees before they pay",
                   "Recorded on camera — yours to keep",
-                  "Specific diagnosis: where the leak is and what to fix first",
+                  "You walk away knowing exactly what to change so more people buy",
                 ].map((item) => (
                   <li
                     key={item}
