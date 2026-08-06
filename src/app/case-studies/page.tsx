@@ -32,7 +32,7 @@ export default async function CaseStudiesPage() {
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <FadeUp>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
-              From KES 33,000 to KES 149,484
+              From KES 33,000 to KES 150,000
               <br />
               in revenue.{" "}
               <span className="text-gradient-gold">Same budget.</span>
@@ -86,7 +86,7 @@ export default async function CaseStudiesPage() {
                 <div className="grid grid-cols-2 gap-6">
                   <div>
                     <p className="text-2xl sm:text-3xl font-bold text-charcoal">
-                      KES 20,931
+                      KES 21,000
                     </p>
                     <p className="text-sm text-slate mt-1">Ad spend</p>
                   </div>
@@ -98,7 +98,7 @@ export default async function CaseStudiesPage() {
                   </div>
                   <div>
                     <p className="text-2xl sm:text-3xl font-bold text-charcoal">
-                      KES 1,610
+                      KES 1,600
                     </p>
                     <p className="text-sm text-slate mt-1">Cost per sale</p>
                   </div>
@@ -119,7 +119,7 @@ export default async function CaseStudiesPage() {
                 <div className="grid grid-cols-2 gap-6">
                   <div>
                     <p className="text-2xl sm:text-3xl font-bold text-charcoal">
-                      KES 13,226
+                      KES 13,000
                     </p>
                     <p className="text-sm text-gold-dark mt-1">
                       Ad spend{" "}
@@ -141,7 +141,7 @@ export default async function CaseStudiesPage() {
                   </div>
                   <div>
                     <p className="text-2xl sm:text-3xl font-bold text-charcoal">
-                      KES 259
+                      KES 260
                     </p>
                     <p className="text-sm text-gold-dark mt-1">
                       Cost per sale{" "}
