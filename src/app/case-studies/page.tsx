@@ -179,15 +179,15 @@ export default async function CaseStudiesPage() {
             {[
               {
                 title: "Ran two ads against each other",
-                desc: "One ad talked about making more money. The other talked about not losing your job. We split the budget 50/50 and let the numbers pick the winner.",
+                desc: "One ad talked about making more money. The other talked about not losing your job. We let Facebook decide which one to show more — it gave the budget to the one that was selling.",
               },
               {
                 title: "Doubled down on what worked",
                 desc: "The \"don't lose your job\" angle sold 4x more. So we killed the other ad and moved every shilling to the one that was already making money.",
               },
               {
-                title: "Swapped the ad before it got stale",
-                desc: "When costs started creeping up, we didn't wait. We wrote new versions of the same winning idea before people started ignoring it.",
+                title: "Swapped the ad before people tuned out",
+                desc: "The winning ad started slowing down. Before it stopped working, we wrote fresh versions of the same idea so it felt new again.",
               },
               {
                 title: "Went back for the almost-buyers",
@@ -221,15 +221,15 @@ export default async function CaseStudiesPage() {
                 We open your store on camera and find the break.
               </h2>
               <p className="text-base text-white/60 leading-relaxed mb-6">
-                Built for e-commerce businesses selling on Shopify, WooCommerce,
-                or any online store. We pull up your product pages, your ads,
-                your checkout flow, your abandoned cart sequence &mdash; and
-                show you exactly where buyers drop off and why. You keep the
-                recording and the diagnosis whether you hire us or not.
+                For online stores &mdash; Shopify, WooCommerce, or anywhere
+                people buy from you on a screen. We go through everything a
+                customer sees from the moment they click your ad to the moment
+                they&apos;re supposed to pay &mdash; and show you where they
+                leave and why. You keep the recording whether you hire us or not.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
-                  "Full walkthrough of your ad-to-checkout path",
+                  "We walk through everything your customer sees before they pay",
                   "Recorded on camera — yours to keep",
                   "Specific diagnosis: where the leak is and what to fix first",
                 ].map((item) => (
