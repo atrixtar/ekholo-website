@@ -179,7 +179,7 @@ export default async function CaseStudiesPage() {
             {[
               {
                 title: "Ran two ads against each other",
-                desc: "One ad talked about making more money. The other talked about not losing your job. We let Facebook decide which one to show more — it gave the budget to the one that was selling.",
+                desc: "One ad talked about making more money. The other talked about not losing your job. We let Facebook decide which one to show more.",
               },
               {
                 title: "Doubled down on what worked",
@@ -188,10 +188,6 @@ export default async function CaseStudiesPage() {
               {
                 title: "Swapped the ad before people tuned out",
                 desc: "The winning ad started slowing down. Before it stopped working, we wrote fresh versions of the same idea so it felt new again.",
-              },
-              {
-                title: "Went back for the almost-buyers",
-                desc: "98 people added to cart and left. We showed them a second ad. Three came back and paid.",
               },
             ].map((step) => (
               <FadeUp key={step.title}>
