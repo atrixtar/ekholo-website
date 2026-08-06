@@ -38,10 +38,9 @@ export default async function CaseStudiesPage() {
               <span className="text-gradient-gold">Same budget.</span>
             </h1>
             <p className="mt-8 text-lg sm:text-xl text-white/50 leading-relaxed max-w-2xl">
-              A bleeding ad account turned into a revenue machine in 10 days,
-              spending less money. Same product. Same landing page. Same
-              audience pool. The only thing that changed was what the ad said
-              and how we tested it.
+              An ad account that was losing money started making it back
+              &mdash; in 10 days, spending less. The only thing that changed
+              was what the ad said.
             </p>
           </FadeUp>
 
