@@ -205,66 +205,119 @@ export default async function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* ─── PAID AUDITS ─── */}
+      {/* ─── REVENUE LEAK AUDIT ─── */}
       <section className="py-20 lg:py-28 bg-charcoal text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <FadeUp>
+          <FadeUp>
+            <div className="text-center max-w-3xl mx-auto mb-16">
               <p className="text-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
                 Revenue Leak Audit
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6">
-                We open your store on camera and find the break.
+                We go through your entire ad-to-sale path and show you
+                where the money is leaking.
               </h2>
-              <p className="text-base text-white/60 leading-relaxed mb-6">
+              <p className="text-base text-white/50 leading-relaxed">
                 For online stores &mdash; Shopify, WooCommerce, or anywhere
-                people buy from you on a screen. We go through everything a
+                people buy from you on a screen. We look at everything a
                 customer sees from the moment they click your ad to the moment
-                they&apos;re supposed to pay &mdash; and show you where they
-                leave and why.
+                they&apos;re supposed to pay. You walk away knowing exactly
+                what to change so more people buy.
               </p>
-              <ul className="space-y-3 mb-8">
-                {[
-                  "We walk through everything your customer sees before they pay",
-                  "Recorded on camera — yours to keep",
-                  "You walk away knowing exactly what to change so more people buy",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-3 text-sm text-white/70"
-                  >
-                    <span className="shrink-0 mt-0.5 text-gold">&#10003;</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </FadeUp>
-            <FadeUp delay={0.1}>
-              <div className="rounded-2xl border border-gold/20 bg-white/[0.03] p-8 sm:p-10 text-center">
-                <p className="text-xs font-semibold text-white/30 uppercase tracking-[0.2em] mb-2">
-                  Revenue Leak Audit
-                </p>
-                <p className="text-5xl sm:text-6xl font-extrabold text-gold mb-1">
-                  KSH 10,000
-                </p>
-                <p className="text-sm text-white/40 mb-8">
-                  per audit &bull; 3 spots per week
-                </p>
-                <a
-                  href={`https://wa.me/${EKHOLO_WHATSAPP}?text=${encodeURIComponent(
-                    "Hi, I'd like to book a Revenue Leak Audit."
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-full px-8 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light hover:shadow-[0_0_30px_rgba(198,164,78,0.3)] transition-all text-base"
+            </div>
+          </FadeUp>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                name: "Single Platform",
+                spend: "KES 150K+/month",
+                platforms: "1 platform (Meta)",
+                price: "KES 80,000",
+                features: [
+                  "Full ad account review",
+                  "What your customers see before they pay",
+                  "Where buyers drop off and why",
+                  "Action plan — what to fix first",
+                  "Discovery call",
+                ],
+              },
+              {
+                name: "Multi-Platform",
+                spend: "KES 300K+/month",
+                platforms: "2 platforms",
+                price: "KES 150,000",
+                featured: true,
+                features: [
+                  "Everything in Single Platform",
+                  "Cross-platform budget review",
+                  "Which platform is actually earning",
+                  "Reallocation plan — same budget, better results",
+                  "Discovery call",
+                ],
+              },
+              {
+                name: "Full-Scale",
+                spend: "KES 400K–1.4M+/month",
+                platforms: "3+ platforms",
+                price: "KES 350,000",
+                features: [
+                  "Everything in Multi-Platform",
+                  "Are the platforms reporting real sales?",
+                  "Creative performance — which ads stopped working",
+                  "Diagnostic deck for your leadership team",
+                  "90-minute presentation session",
+                ],
+              },
+            ].map((tier) => (
+              <FadeUp key={tier.name}>
+                <div
+                  className={`rounded-2xl p-8 h-full flex flex-col ${
+                    tier.featured
+                      ? "border-2 border-gold/40 bg-gold/[0.06]"
+                      : "border border-white/10 bg-white/[0.02]"
+                  }`}
                 >
-                  Book Your Audit &rarr;
-                </a>
-                <p className="mt-4 text-xs text-white/25">
-                  Limited to 3 audits per week so each one gets full attention.
-                </p>
-              </div>
-            </FadeUp>
+                  {tier.featured && (
+                    <span className="inline-block self-start text-[10px] font-bold text-charcoal bg-gold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
+                      Most common
+                    </span>
+                  )}
+                  <p className="text-sm font-semibold text-white/40 uppercase tracking-wider">
+                    {tier.name}
+                  </p>
+                  <p className="text-3xl sm:text-4xl font-extrabold text-gold mt-3 mb-1">
+                    {tier.price}
+                  </p>
+                  <p className="text-sm text-white/30 mb-2">{tier.spend}</p>
+                  <p className="text-xs text-white/25 mb-6">{tier.platforms}</p>
+                  <ul className="space-y-3 mb-8 flex-1">
+                    {tier.features.map((f) => (
+                      <li key={f} className="flex gap-3 text-sm text-white/60">
+                        <span className="shrink-0 mt-0.5 text-gold">
+                          &#10003;
+                        </span>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={`https://wa.me/${EKHOLO_WHATSAPP}?text=${encodeURIComponent(
+                      `Hi, I'd like to book a discovery call about the ${tier.name} audit.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center justify-center w-full px-8 py-4 font-semibold rounded-full transition-all text-base ${
+                      tier.featured
+                        ? "bg-gold text-charcoal hover:bg-gold-light hover:shadow-[0_0_30px_rgba(198,164,78,0.3)]"
+                        : "border border-white/15 text-white hover:bg-white/5 hover:border-white/25"
+                    }`}
+                  >
+                    Book a Discovery Call &rarr;
+                  </a>
+                </div>
+              </FadeUp>
+            ))}
           </div>
         </div>
       </section>
@@ -352,19 +405,19 @@ export default async function CaseStudiesPage() {
               Want us to find yours?
             </h2>
             <p className="mt-6 text-lg text-white/60">
-              Book a Revenue Leak Audit. You walk away knowing exactly
-              where the break sits.
+              Book a discovery call. We&apos;ll look at what you&apos;re
+              spending and tell you if an audit makes sense.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={`https://wa.me/${EKHOLO_WHATSAPP}?text=${encodeURIComponent(
-                  "Hi, I'd like to book a Revenue Leak Audit."
+                  "Hi, I'd like to book a discovery call about an audit."
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-10 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light transition-all text-base hover:shadow-[0_0_30px_rgba(198,164,78,0.3)]"
               >
-                Book an Audit &mdash; KSH 10,000
+                Book a Discovery Call &rarr;
               </a>
               <Link
                 href="/apply"
